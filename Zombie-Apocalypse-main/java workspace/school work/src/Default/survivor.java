@@ -19,19 +19,27 @@ public class survivor
     	switch (role) 
     	{
     	case "hunter":
-    		System.out.println("hunter");
+    		scavenging = 4;
+    		combatStrength = 5;
+    		foodConsumption = 3;
     		break;
     	case "blacksmith":
-    		System.out.println("blacksmith");
+    		scavenging = 1;
+    		combatStrength = 3;
+    		foodConsumption = 4;
     		break;
     	case "builder":
-    		System.out.println("builder");
+    		scavenging = 1;
+    		combatStrength = 2;
+    		foodConsumption = 5;
     		break;
     	case "medic":
-    		System.out.println("medic");
+    		scavenging = 3;
+    		combatStrength = 1;
+    		foodConsumption = 1;
     		break;
     	default:
-    		System.out.println("error assigning job");
+    		System.out.println("error setting stats");
     		break;
     	}
     }
