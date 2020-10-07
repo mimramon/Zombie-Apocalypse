@@ -1,2 +1,0 @@
-# Zombie-Apocalypse
-School work
