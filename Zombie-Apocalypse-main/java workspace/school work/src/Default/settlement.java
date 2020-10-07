@@ -2,11 +2,11 @@ package Default;
 
 public class settlement 
 {
-	//buildings
+	// VARIABLES - Buildings
     public int houses;
     public boolean workshop;
 
-    //resources
+    // VARIABLES - Resources
     public int wood;
     public int metal;
     public int food;
