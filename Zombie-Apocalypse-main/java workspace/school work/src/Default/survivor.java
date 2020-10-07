@@ -28,26 +28,31 @@ public class survivor
 		// Setting the stats for a survivor when they are added to the party
     	switch (role) 
     	{
+			// Hunter class
     		case "Hunter":
     			scavenging = 4;
     			combatStrength = 5;
     			foodConsumption = 3;
-    			break;
+				break;
+			// Blacksmith class
     		case "Blacksmith":
     			scavenging = 1;
     			combatStrength = 3;
     			foodConsumption = 4;
-    			break;
+				break;
+			// Builder class
     		case "Builder":
     			scavenging = 1;
     			combatStrength = 2;
     			foodConsumption = 5;
-    			break;
+				break;
+			// Medic class
     		case "Medic":
     			scavenging = 3;
     			combatStrength = 1;
     			foodConsumption = 1;
-    			break;
+				break;
+				// Error
     		default:
     			System.out.println("There was an error setting the stats for that survivor");
     			break;
