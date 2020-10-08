@@ -1,6 +1,6 @@
 package Default;
 
-public class settlement 
+public class Settlement 
 {
 	// VARIABLES - Buildings
     public int houses;
