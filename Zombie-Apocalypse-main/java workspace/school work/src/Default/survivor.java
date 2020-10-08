@@ -52,7 +52,7 @@ public class survivor
     			combatStrength = 1;
     			foodConsumption = 1;
 				break;
-				// Error
+			// Error
     		default:
     			System.out.println("There was an error setting the stats for that survivor");
     			break;

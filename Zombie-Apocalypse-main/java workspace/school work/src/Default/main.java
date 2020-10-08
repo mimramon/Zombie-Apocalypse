@@ -8,7 +8,8 @@ public class main // Game manager class
     public static Scanner scan = new Scanner(System.in);
     public static Random rand = new Random();
     public static String proceed;
-    public static survivor[] PARTY = new survivor[4]; //
+	public static survivor[] PARTY = new survivor[20];
+	public static int partySize;
     public static int round = 1;
     public static boolean isDead = false;
     public static int event;
@@ -18,9 +19,19 @@ public class main // Game manager class
     {
         System.out.println("Welcome to zombie apocalypse.\nPress enter to continue.");
         proceed = scan.nextLine();
+		
+		startGame();
+
+		roundManager(); 
         
-        // Sreates starting party
-        PARTY[0] = new survivor();
+	}
+	
+	public static void startGame()
+	{
+		// Creates starting party
+		partySize = 4;
+		
+		PARTY[0] = new survivor();
         PARTY[0].role ="Hunter";
         PARTY[0].setStats();
         PARTY[1] = new survivor();
@@ -32,12 +43,16 @@ public class main // Game manager class
         PARTY[3] = new survivor();
         PARTY[3].role ="Medic";
         PARTY[3].setStats();
-        
-        while(round <= 100 && !isDead)
+	}
+
+	public static void roundManager()
+	{
+		while(round <= 100 && !isDead)
         {
         	System.out.println("\nYou are now startring round "+round);
 			
 			// In-game event handler
+			
         	event = rand.nextInt(6);
         	
         	switch (event)
@@ -81,7 +96,6 @@ public class main // Game manager class
         
         	round++;
         }
-        
-    }
+	}
     
 }
