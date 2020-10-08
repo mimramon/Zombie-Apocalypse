@@ -3,7 +3,7 @@ package Default;
 // Imports
 import java.util.*;
 
-public class Survivor 
+public class survivor 
 {
 	// VARIABLES - Unused
 	public boolean isHunting;

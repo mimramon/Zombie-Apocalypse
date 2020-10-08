@@ -8,8 +8,8 @@ public class main // Game manager class
     public static Scanner scan = new Scanner(System.in);
     public static Random rand = new Random();
     public static String proceed;
-	public static Survivor[] PARTY = new Survivor[20];
-	public static Settlement settlement = new Settlement();
+	public static survivor[] PARTY = new survivor[20];
+	public static settlement settlement = new settlement();
 	public static int partySize;
     public static int round = 1;
     public static boolean isDead = false;
@@ -18,7 +18,7 @@ public class main // Game manager class
     
     public static void main(String[] args) // Start function
     {
-        System.out.println("Welcome to zombie apocalypse.\nPress enter to continue.");
+        System.out.println("Welcome to Zombie Apocalypse.\nPress enter to continue.");
         proceed = scan.nextLine();
 		
 		startGame();
@@ -32,16 +32,16 @@ public class main // Game manager class
 		// Creates starting party
 		partySize = 4;
 		
-		PARTY[0] = new Survivor();
+		PARTY[0] = new survivor();
         PARTY[0].role ="Hunter";
         PARTY[0].setStats();
-        PARTY[1] = new Survivor();
+        PARTY[1] = new survivor();
         PARTY[1].role ="Hunter";
         PARTY[1].setStats();
-        PARTY[2] = new Survivor();
+        PARTY[2] = new survivor();
         PARTY[2].role ="Builder";
         PARTY[2].setStats();
-        PARTY[3] = new Survivor();
+        PARTY[3] = new survivor();
         PARTY[3].role ="Medic";
         PARTY[3].setStats();
 	}
@@ -60,16 +60,56 @@ public class main // Game manager class
         	{
 				// Zombie event
         		case 0:
-        			System.out.println("Zombie");
+        			System.out.println("You are attacked by a horde of zombies\nPress enter to continue to the next round");
+					//proceed = scan.nextLine();
 					break;
+
 				// Resource event
         		case 1:
-        			System.out.println("Resource");
+					String[] resourceArray = {"Wood", "Metal", "Meds", "Ammo"};
+					int newResource = rand.nextInt(resourceArray.length);
+					int newResourceAmount = rand.nextInt(partySize * 5);
+					System.out.println("Congratulations! You have found " + newResourceAmount + " " + resourceArray[newResource]);
+				
+					switch (resourceArray[newResource])
+					{
+						// Case for if the resource is wood
+						case "Wood":
+							settlement.Wood = settlement.Wood + newResourceAmount;
+							System.out.println("You now have " + settlement.Wood + " wood");
+							break;
+						// Case for if the resource is metal
+						case "Metal":
+							settlement.Metal = settlement.Metal + newResourceAmount;
+							System.out.println("You now have " + settlement.Metal + " metal");
+							break;
+						// Case for if the resource is meds
+						case "Meds":
+							settlement.Meds = settlement.Meds + newResourceAmount;
+							System.out.println("You now have " + settlement.Meds + " meds");
+							break;
+						// Case for if the resource is ammo
+						case "Ammo":
+							settlement.Ammo = settlement.Ammo + newResourceAmount;
+							System.out.println("You now have " + settlement.Ammo + " ammo");
+							break;
+						// Error
+						default:
+							System.out.println("There was an error collecting the resources");
+							break;
+					}
+
+					System.out.println("Press enter to continue to the next round");
+
+					proceed = scan.nextLine();
 					break;
+
 				// Another zombie event (To increase the chances of it occuring)
         		case 2:
-        			System.out.println("Zombie");
+					System.out.println("You are attacked by a horde of zombies\nPress enter to continue to the next round");
+					//proceed = scan.nextLine();
 					break;
+
 				// Food event
 				case 3: 
 					// Randomly generates an amount of food for the survivors to find
@@ -77,17 +117,23 @@ public class main // Game manager class
 					System.out.println("You have found " + newFood + " food.");
 					
 					// Updates the total amount of food available
-					settlement.food = settlement.food + newFood;
-					System.out.println("You now have " + settlement.food + " food.");
+					settlement.Food = settlement.Food + newFood;
+					System.out.println("You now have " + settlement.Food + " food.\nPress enter to continue to the next round");
+					//proceed = scan.nextLine();
 					break;
+
 				// Nothing happens
         		case 4:
-					System.out.println("Nothing has has happened this round");
+					System.out.println("Nothing has has happened this round\nPress enter to continue.");
+					//proceed = scan.nextLine();
 					break;
+
 				// Survivor event
         		case 5:
-        			System.out.println("Survivor");
+					System.out.println("Survivor\nPress enter to continue to the next round");
+					//proceed = scan.nextLine();
 					break;
+					
 				// Error
         		default:
         			System.out.println("There was an error starting the round");
