@@ -3,7 +3,7 @@ package Default;
 // Imports
 import java.util.*;
 
-public class zombie 
+public class Zombie 
 {
 	// VARIABLES - Methods
 	public Random rand = new Random();

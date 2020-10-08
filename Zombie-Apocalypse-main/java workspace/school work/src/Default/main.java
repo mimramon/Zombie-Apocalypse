@@ -8,7 +8,8 @@ public class main // Game manager class
     public static Scanner scan = new Scanner(System.in);
     public static Random rand = new Random();
     public static String proceed;
-	public static survivor[] PARTY = new survivor[20];
+	public static Survivor[] PARTY = new Survivor[20];
+	public static Settlement settlement = new Settlement();
 	public static int partySize;
     public static int round = 1;
     public static boolean isDead = false;
@@ -31,16 +32,16 @@ public class main // Game manager class
 		// Creates starting party
 		partySize = 4;
 		
-		PARTY[0] = new survivor();
+		PARTY[0] = new Survivor();
         PARTY[0].role ="Hunter";
         PARTY[0].setStats();
-        PARTY[1] = new survivor();
+        PARTY[1] = new Survivor();
         PARTY[1].role ="Hunter";
         PARTY[1].setStats();
-        PARTY[2] = new survivor();
+        PARTY[2] = new Survivor();
         PARTY[2].role ="Builder";
         PARTY[2].setStats();
-        PARTY[3] = new survivor();
+        PARTY[3] = new Survivor();
         PARTY[3].role ="Medic";
         PARTY[3].setStats();
 	}
@@ -70,12 +71,18 @@ public class main // Game manager class
         			System.out.println("Zombie");
 					break;
 				// Food event
-        		case 3:
-        			System.out.println("Food");
+				case 3: 
+					// Randomly generates an amount of food for the survivors to find
+					int newFood = rand.nextInt(partySize * 2);
+					System.out.println("You have found " + newFood + " food.");
+					
+					// Updates the total amount of food available
+					settlement.food = settlement.food + newFood;
+					System.out.println("You now have " + settlement.food + " food.");
 					break;
 				// Nothing happens
         		case 4:
-        			System.out.println("Nothing");
+					System.out.println("Nothing has has happened this round");
 					break;
 				// Survivor event
         		case 5:
