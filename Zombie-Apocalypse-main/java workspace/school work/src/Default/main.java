@@ -23,8 +23,7 @@ public class main // Game manager class
 		
 		startGame();
 
-		roundManager(); 
-        
+		roundManager();       
 	}
 	
 	public static void startGame()
@@ -43,10 +42,11 @@ public class main // Game manager class
         PARTY[2].setStats();
         PARTY[3] = new survivor();
         PARTY[3].role ="Medic";
-        PARTY[3].setStats();
-        
+		PARTY[3].setStats();
+		
+		
         //Creates starting settlement
-        settlement.setSettlement();
+		settlement.setSettlement();
 	}
 
 	public static void roundManager()
