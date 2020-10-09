@@ -14,7 +14,7 @@ public class main // Game manager class
     public static int round = 1;
     public static boolean isDead = false;
     public static int event;
-    
+    public static String userInput;
     
     public static void main(String[] args) // Start function
     {
@@ -44,6 +44,9 @@ public class main // Game manager class
         PARTY[3] = new survivor();
         PARTY[3].role ="Medic";
         PARTY[3].setStats();
+        
+        //Creates starting settlement
+        settlement.setSettlement();
 	}
 
 	public static void roundManager()
@@ -66,7 +69,7 @@ public class main // Game manager class
 
 				// Resource event
         		case 1:
-					String[] resourceArray = {"Wood", "Metal", "Meds", "Ammo"};
+					String[] resourceArray = {"wood", "metal", "meds", "ammo"};
 					int newResource = rand.nextInt(resourceArray.length);
 					int newResourceAmount = rand.nextInt(partySize * 5);
 					System.out.println("Congratulations! You have found " + newResourceAmount + " " + resourceArray[newResource]);
@@ -74,24 +77,24 @@ public class main // Game manager class
 					switch (resourceArray[newResource])
 					{
 						// Case for if the resource is wood
-						case "Wood":
-							settlement.Wood = settlement.Wood + newResourceAmount;
-							System.out.println("You now have " + settlement.Wood + " wood");
+						case "wood":
+							settlement.wood = settlement.wood + newResourceAmount;
+							System.out.println("You now have " + settlement.wood + " wood");
 							break;
 						// Case for if the resource is metal
-						case "Metal":
-							settlement.Metal = settlement.Metal + newResourceAmount;
-							System.out.println("You now have " + settlement.Metal + " metal");
+						case "metal":
+							settlement.meds = settlement.meds + newResourceAmount;
+							System.out.println("You now have " + settlement.meds + " metal");
 							break;
 						// Case for if the resource is meds
-						case "Meds":
-							settlement.Meds = settlement.Meds + newResourceAmount;
-							System.out.println("You now have " + settlement.Meds + " meds");
+						case "meds":
+							settlement.meds = settlement.meds + newResourceAmount;
+							System.out.println("You now have " + settlement.meds + " meds");
 							break;
 						// Case for if the resource is ammo
-						case "Ammo":
-							settlement.Ammo = settlement.Ammo + newResourceAmount;
-							System.out.println("You now have " + settlement.Ammo + " ammo");
+						case "ammo":
+							settlement.ammo = settlement.ammo + newResourceAmount;
+							System.out.println("You now have " + settlement.ammo + " ammo");
 							break;
 						// Error
 						default:
@@ -101,24 +104,24 @@ public class main // Game manager class
 
 					System.out.println("Press enter to continue to the next round");
 
-					proceed = scan.nextLine();
+					//proceed = scan.nextLine();
 					break;
 
-				// Another zombie event (To increase the chances of it occuring)
+				// Another zombie event (To increase the chances of it occurring)
         		case 2:
 					System.out.println("You are attacked by a horde of zombies\nPress enter to continue to the next round");
 					//proceed = scan.nextLine();
 					break;
 
-				// Food event
+				// food event
 				case 3: 
 					// Randomly generates an amount of food for the survivors to find
-					int newFood = rand.nextInt(partySize * 2);
-					System.out.println("You have found " + newFood + " food.");
+					int newfood = rand.nextInt(partySize * 2);
+					System.out.println("You have found " + newfood + " food.");
 					
 					// Updates the total amount of food available
-					settlement.Food = settlement.Food + newFood;
-					System.out.println("You now have " + settlement.Food + " food.\nPress enter to continue to the next round");
+					settlement.food = settlement.food + newfood;
+					System.out.println("You now have " + settlement.food + " food.\nPress enter to continue to the next round");
 					//proceed = scan.nextLine();
 					break;
 
@@ -139,16 +142,44 @@ public class main // Game manager class
         			System.out.println("There was an error starting the round");
         			break;
         	}
-			
-			// Idle tasks thhat occur every round
-        	for (int i = 0; i < PARTY.length ; i++)
-        	{
-        		//System.out.println("IDLE TASK GOES HERE");
-        		//do the idle actions of the party member
-        	}
-        
+        	
+        	idleTasks();
         	round++;
         }
+	}
+	
+	public static void idleTasks()
+	{
+		// Idle tasks that occur every round
+    	for (int i = 0; i < partySize ; i++)
+    	{
+    		//do the idle actions of the party member
+    		System.out.println("\nWhat would you like your " + PARTY[i].role + " to do.");
+    		System.out.println("1) Scavenge\n2) Find timber\n3) Mining");
+    		
+    		//THE FOLLOWING IS SHIT CODE, NEVER DO THIS
+    		if(PARTY[i].role.equals("Builder"))
+    		{
+				PARTY[i].builderIdle();
+			}
+			else if(PARTY[i].role.equals("Blacksmith"))
+			{
+				PARTY[i].blacksmithIdle();
+			}
+			else if(PARTY[i].role.equals("Medic"))
+			{
+				PARTY[i].medicIdle();
+			}
+			else if(PARTY[i].role.equals("Hunter"))
+			{
+				PARTY[i].hunterIdle();
+			}
+			else 
+			{
+			System.out.println("There was an error ");
+			}
+			
+    	}
 	}
     
 }
