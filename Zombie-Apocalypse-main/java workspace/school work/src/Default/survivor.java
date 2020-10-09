@@ -12,6 +12,7 @@ public class survivor
 	public Scanner scan = new Scanner(System.in);
 	public Random rand = new Random();
 	public static settlement settlement = new settlement();
+	public static main main = new main();
 	
 
 	//VARIABLES - Survivor Classes
@@ -25,7 +26,7 @@ public class survivor
 	
 	// VARIABLES - Misc
 	public String role;
-    public static String userInput;
+    public static int userInput;
     
     public void setStats ()
     {
@@ -68,27 +69,31 @@ public class survivor
 		if(settlement.wood >=10)
 		{
 			System.out.println("4) Build a house");
-    			if(settlement.wood >= 20)
+    			if(settlement.wood >= 20 && !settlement.workshop)
     			{
 					System.out.println("5) Build a workshop");
 					//#region Builder Tasks (Up to task 5)
-    				userInput = scan.next();
+    				userInput = scan.nextInt();
     				switch (userInput) 
     				{
-    					case "1":
+    					case 1:
 						
     						break;
-    					case "2":
-							settlement.wood = settlement.wood + rand.nextInt(main.partySize * 2);
+    					case 2:
+							settlement.wood = settlement.wood + rand.nextInt(Default.main.partySize * 2);
+							System.out.println("You now have " + settlement.wood + " wood");
     						break;
-    					case "3":
+    					case 3:
 						
     						break;
-    					case "4":
-						
+    					case 4:
+							settlement.houses = settlement.houses + 1;
+							settlement.wood = settlement.wood - 10;
+							System.out.println("You have built another house. You now have " + settlement.houses + " houses.");
     						break;
-    					case "5":
+    					case 5:
 							settlement.workshop = true;
+							settlement.wood = settlement.wood - 20;
 							System.out.println("You have built the workshop!");
     						break;
     					default:
@@ -96,37 +101,69 @@ public class survivor
 					}
 					//#endregion
 				}
-				//#region Builder Tasks (Up to option 4)
-				userInput = scan.next();
-    			switch (userInput) 
-    			{
-    				case "1":
-    				
-    					break;
-    				case "2":
-    					
-    					break;
-    				case "3":
-    					
-    					break;
-    				case "4":
-						settlement.houses++;
-						System.out.println("You have built another house. You now have " + settlement.houses + " houses.");
-    					break;
-    				default:
-    					break;
+				else
+				{
+					//#region Builder Tasks (Up to option 4)
+					userInput = scan.nextInt();
+    				switch (userInput) 
+    				{
+    					case 1:
+						
+    						break;
+    					case 2:
+							settlement.wood = settlement.wood + rand.nextInt(Default.main.partySize * 2);
+							System.out.println("You now have " + settlement.wood + " wood");
+    						break;
+    					case 3:
+						
+    						break;
+    					case 4:
+							settlement.houses = settlement.houses + 1;
+							settlement.wood = settlement.wood - 10;
+							System.out.println("You have built another house. You now have " + settlement.houses + " houses.");
+    						break;
+    					default:
+    						break;
+					}
+					//#endregion
 				}
-				//#endregion
+				
 		}
 		else 
 		{
-			userInput = scan.next();
+			userInput = scan.nextInt();
 		}
 	}
 
 	public void blacksmithIdle()
 	{
-
+		if(settlement.wood >= 20)
+    	{
+			System.out.println("4) Make meds");
+			//#region Builder Tasks (Up to task 5)
+    		userInput = scan.nextInt();
+    		switch (userInput) 
+    		{
+    			case 1:
+    				break;
+    			case 2:
+					settlement.wood = settlement.wood + rand.nextInt(Default.main.partySize * 2);
+					System.out.println("You now have " + settlement.wood + " wood");
+    				break;
+    			case 3:
+    				break;
+				case 4:
+					// Code to make ammo here
+					break;
+    			default:
+    				break;
+			}
+			//#endregion
+		}
+		else 
+		{
+			userInput = scan.nextInt();
+		}
 	}
 
 	public void medicIdle()
@@ -136,17 +173,18 @@ public class survivor
     	{
 			System.out.println("4) Make meds");
 			//#region Builder Tasks (Up to task 5)
-    		userInput = scan.next();
+    		userInput = scan.nextInt();
     		switch (userInput) 
     		{
-    			case "1":
+    			case 1:
     				break;
-    			case "2":
-					settlement.wood = settlement.wood + rand.nextInt(main.partySize * 2);
+    			case 2:
+					settlement.wood = settlement.wood + rand.nextInt(Default.main.partySize * 2);
+					System.out.println("You now have " + settlement.wood + " wood");
     				break;
-    			case "3":
+    			case 3:
     				break;
-				case "4":
+				case 4:
 					// Code to make meds here
 					settlement.food = settlement.food - 10;
 					settlement.meds++;
@@ -159,24 +197,25 @@ public class survivor
 		}
 		else 
 		{
-			userInput = scan.next();
+			userInput = scan.nextInt();
 		}
 		
 	}
 
 	public void hunterIdle()
 	{
-		userInput = scan.next();
+		userInput = scan.nextInt();
 		//#region Base Tasks (Up to option 3)
 		switch (userInput) 
 		{
-			case "1":
+			case 1:
 				// Scavenge
 				break;
-			case "2":
-				// Find timber
+			case 2:
+				settlement.wood = settlement.wood + rand.nextInt(Default.main.partySize * 2);
+				System.out.println("You now have " + settlement.wood + " wood");
 				break;
-			case "3":
+			case 3:
 				// Mining
 				break;
 			default:
