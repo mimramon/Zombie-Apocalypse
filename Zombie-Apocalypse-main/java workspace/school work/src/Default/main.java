@@ -47,6 +47,13 @@ public class main // Game manager class
 		
         //Creates starting settlement
 		settlement.setSettlement();
+		System.out.println("You are starting the game with:");
+		System.out.println("- " + settlement.houses + " house");
+		System.out.println("- " + settlement.wood + " wood");
+		System.out.println("- " + settlement.metal + " metal");
+		System.out.println("- " + settlement.food + " food");
+		System.out.println("- " + settlement.meds + " meds");
+		System.out.println("- " + settlement.ammo + " ammo");
 	}
 
 	public static void roundManager()
@@ -155,10 +162,6 @@ public class main // Game manager class
 		// Idle tasks that occur every round
     	for (int i = 0; i < partySize ; i++)
     	{
-    		//do the idle actions of the party member
-    		System.out.println("\nWhat would you like your " + PARTY[i].role + " to do.");
-    		System.out.println("1) Scavenge\n2) Find timber\n3) Mining");
-    		
     		//THE FOLLOWING IS SHIT CODE, NEVER DO THIS
     		if(PARTY[i].role.equals("Builder"))
     		{
