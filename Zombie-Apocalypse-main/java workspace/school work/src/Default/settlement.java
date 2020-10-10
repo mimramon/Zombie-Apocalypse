@@ -3,15 +3,15 @@ package Default;
 public class settlement 
 {
 	// VARIABLES - Buildings
-    public int houses;
-    public boolean workshop;
+    public static int houses;
+    public static boolean workshop;
 
     // VARIABLES - Starting Resources
-    public int wood;
-    public int metal;
-    public int food;
-    public int meds;
-    public int ammo;
+    public static int wood;
+    public static int metal;
+    public static int food;
+    public static int meds;
+    public static int ammo;
 
     public void setSettlement()
     {
