@@ -26,7 +26,8 @@ public class survivor
 	
 	// VARIABLES - Misc
 	public String role;
-    public static int userInput;
+	public static int userInput;
+	public static int randomNum;
     
     public void setStats ()
     {
@@ -64,6 +65,7 @@ public class survivor
     	}
 	}
 	
+	// BUILDER IDLE TASKS
 	public void builderIdle()
 	{
 		if(settlement.wood >=10)
@@ -77,14 +79,17 @@ public class survivor
     				switch (userInput) 
     				{
     					case 1:
-						
+
     						break;
     					case 2:
 							settlement.wood = settlement.wood + rand.nextInt(Default.main.partySize * 2);
 							System.out.println("You now have " + settlement.wood + " wood");
     						break;
     					case 3:
-						
+							randomNum = rand.nextInt(Default.main.partySize * 2);
+							System.out.println("You have mined " + randomNum + " metal!");
+							settlement.metal = settlement.metal + randomNum;
+							System.out.println("You now have " + settlement.metal + " metal");
     						break;
     					case 4:
 							settlement.houses = settlement.houses + 1;
@@ -115,7 +120,10 @@ public class survivor
 							System.out.println("You now have " + settlement.wood + " wood");
     						break;
     					case 3:
-						
+							randomNum = rand.nextInt(Default.main.partySize * 2);
+							System.out.println("You have mined " + randomNum + " metal!");
+							settlement.metal = settlement.metal + randomNum;
+							System.out.println("You now have " + settlement.metal + " metal");
     						break;
     					case 4:
 							settlement.houses = settlement.houses + 1;
@@ -135,11 +143,12 @@ public class survivor
 		}
 	}
 
+	// BLACKSMITH IDLE TASKS
 	public void blacksmithIdle()
 	{
-		if(settlement.wood >= 20)
+		if(settlement.metal >0 && settlement.workshop == true)
     	{
-			System.out.println("4) Make meds");
+			System.out.println("4) Make ammo");
 			//#region Builder Tasks (Up to task 5)
     		userInput = scan.nextInt();
     		switch (userInput) 
@@ -151,10 +160,26 @@ public class survivor
 					System.out.println("You now have " + settlement.wood + " wood");
     				break;
     			case 3:
-    				break;
-				case 4:
-					// Code to make ammo here
+					randomNum = rand.nextInt(Default.main.partySize * 2);
+					System.out.println("You have mined " + randomNum + " metal!");
+					settlement.metal = settlement.metal + randomNum;
+					System.out.println("You now have " + settlement.metal + " metal");
 					break;
+				case 4:
+					System.out.println("How much ammo would you like to make?\nWith your current resources, you can make " + settlement.metal + " ammo.");
+					userInput = scan.nextInt();
+					if(settlement.metal/userInput >= 1)
+					{
+						settlement.metal = settlement.metal - userInput;
+						settlement.ammo = settlement.ammo + userInput;
+						System.out.println("You have made " + userInput + " ammo, you now have " + settlement.ammo + " ammo.");
+					}
+					else
+					{
+						System.out.println("You do not have enough metal, please choose a different option");
+						blacksmithIdle();
+					}
+    				break;
     			default:
     				break;
 			}
@@ -166,10 +191,10 @@ public class survivor
 		}
 	}
 
+	// MEDIC IDLE TASKS
 	public void medicIdle()
 	{
-
-		if(settlement.wood >= 20)
+		if(settlement.food >= 10 && settlement.workshop == true)
     	{
 			System.out.println("4) Make meds");
 			//#region Builder Tasks (Up to task 5)
@@ -182,13 +207,28 @@ public class survivor
 					settlement.wood = settlement.wood + rand.nextInt(Default.main.partySize * 2);
 					System.out.println("You now have " + settlement.wood + " wood");
     				break;
-    			case 3:
+				case 3:
+					randomNum = rand.nextInt(Default.main.partySize * 2);
+					System.out.println("You have mined " + randomNum + " metal!");
+					settlement.metal = settlement.metal + randomNum;
+					System.out.println("You now have " + settlement.metal + " metal");
     				break;
 				case 4:
 					// Code to make meds here
-					settlement.food = settlement.food - 10;
-					settlement.meds++;
-					System.out.println("You have made a Med, you now have " + settlement.meds + " meds.");
+					System.out.println("How many meds would you like to make?\nWith your current resources, you can make " + settlement.food/10 + " meds.");
+					userInput = scan.nextInt();
+					if(settlement.food/(userInput*10) >= 1)
+					{
+						settlement.food = settlement.food - (userInput*10);
+						settlement.meds = settlement.meds + userInput;
+						System.out.println("You have made " + userInput + " meds, you now have " + settlement.meds + " meds.");
+					}
+					else
+					{
+						System.out.println("You do not have enough food, please choose a different option");
+						medicIdle();
+					}
+					
     				break;
     			default:
     				break;
@@ -202,6 +242,7 @@ public class survivor
 		
 	}
 
+	// HUNTER IDLE TASKS
 	public void hunterIdle()
 	{
 		userInput = scan.nextInt();
@@ -216,7 +257,10 @@ public class survivor
 				System.out.println("You now have " + settlement.wood + " wood");
 				break;
 			case 3:
-				// Mining
+				randomNum = rand.nextInt(Default.main.partySize * 2);
+				System.out.println("You have mined " + randomNum + " metal!");
+				settlement.metal = settlement.metal + randomNum;
+				System.out.println("You now have " + settlement.metal + " metal");
 				break;
 			default:
 				break;

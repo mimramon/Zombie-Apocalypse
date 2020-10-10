@@ -35,7 +35,7 @@ public class main // Game manager class
         PARTY[0].role ="Hunter";
         PARTY[0].setStats();
         PARTY[1] = new survivor();
-        PARTY[1].role ="Hunter";
+        PARTY[1].role ="Blacksmith";
         PARTY[1].setStats();
         PARTY[2] = new survivor();
         PARTY[2].role ="Builder";
@@ -101,16 +101,15 @@ public class main // Game manager class
 							System.out.println("There was an error collecting the resources");
 							break;
 					}
-
-					System.out.println("Press enter to continue to the next round");
-
-					//proceed = scan.nextLine();
+					System.out.println("Press enter to continue to task selection");
+					proceed = scan.nextLine();
 					break;
 
 				// Another zombie event (To increase the chances of it occurring)
         		case 2:
-					System.out.println("You are attacked by a horde of zombies\nPress enter to continue to the next round");
-					//proceed = scan.nextLine();
+					System.out.println("You are attacked by a horde of zombies");
+					System.out.println("Press enter to continue to task selection");
+					proceed = scan.nextLine();
 					break;
 
 				// food event
@@ -121,20 +120,23 @@ public class main // Game manager class
 					
 					// Updates the total amount of food available
 					settlement.food = settlement.food + newfood;
-					System.out.println("You now have " + settlement.food + " food.\nPress enter to continue to the next round");
-					//proceed = scan.nextLine();
+					System.out.println("You now have " + settlement.food + " food.");
+					System.out.println("Press enter to continue to task selection");
+					proceed = scan.nextLine();
 					break;
 
 				// Nothing happens
         		case 4:
-					System.out.println("Nothing has has happened this round\nPress enter to continue.");
-					//proceed = scan.nextLine();
+					System.out.println("Nothing has has happened this round");
+					System.out.println("Press enter to continue to task selection");
+					proceed = scan.nextLine();
 					break;
 
 				// Survivor event
         		case 5:
-					System.out.println("Survivor\nPress enter to continue to the next round");
-					//proceed = scan.nextLine();
+					System.out.println("Survivor");
+					System.out.println("Press enter to continue to task selection");
+					proceed = scan.nextLine();
 					break;
 					
 				// Error
@@ -179,7 +181,9 @@ public class main // Game manager class
 			System.out.println("There was an error ");
 			}
 			
-    	}
+		}
+		System.out.println("\n\nPlease press enter to continue to the next round");
+		proceed = scan.nextLine();
 	}
     
 }
