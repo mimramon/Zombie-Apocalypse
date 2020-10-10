@@ -35,7 +35,7 @@ public class main // Game manager class
         PARTY[0].role ="Hunter";
         PARTY[0].setStats();
         PARTY[1] = new survivor();
-        PARTY[1].role ="Hunter";
+        PARTY[1].role ="Blacksmith";
         PARTY[1].setStats();
         PARTY[2] = new survivor();
         PARTY[2].role ="Builder";
@@ -47,6 +47,13 @@ public class main // Game manager class
 		
         //Creates starting settlement
 		settlement.setSettlement();
+		System.out.println("You are starting the game with:");
+		System.out.println("- " + settlement.houses + " house");
+		System.out.println("- " + settlement.wood + " wood");
+		System.out.println("- " + settlement.metal + " metal");
+		System.out.println("- " + settlement.food + " food");
+		System.out.println("- " + settlement.meds + " meds");
+		System.out.println("- " + settlement.ammo + " ammo");
 	}
 
 	public static void roundManager()
@@ -101,16 +108,15 @@ public class main // Game manager class
 							System.out.println("There was an error collecting the resources");
 							break;
 					}
-
-					System.out.println("Press enter to continue to the next round");
-
-					//proceed = scan.nextLine();
+					System.out.println("Press enter to continue to task selection");
+					proceed = scan.nextLine();
 					break;
 
 				// Another zombie event (To increase the chances of it occurring)
         		case 2:
-					System.out.println("You are attacked by a horde of zombies\nPress enter to continue to the next round");
-					//proceed = scan.nextLine();
+					System.out.println("You are attacked by a horde of zombies");
+					System.out.println("Press enter to continue to task selection");
+					proceed = scan.nextLine();
 					break;
 
 				// food event
@@ -121,20 +127,23 @@ public class main // Game manager class
 					
 					// Updates the total amount of food available
 					settlement.food = settlement.food + newfood;
-					System.out.println("You now have " + settlement.food + " food.\nPress enter to continue to the next round");
-					//proceed = scan.nextLine();
+					System.out.println("You now have " + settlement.food + " food.");
+					System.out.println("Press enter to continue to task selection");
+					proceed = scan.nextLine();
 					break;
 
 				// Nothing happens
         		case 4:
-					System.out.println("Nothing has has happened this round\nPress enter to continue.");
-					//proceed = scan.nextLine();
+					System.out.println("Nothing has has happened this round");
+					System.out.println("Press enter to continue to task selection");
+					proceed = scan.nextLine();
 					break;
 
 				// Survivor event
         		case 5:
-					System.out.println("Survivor\nPress enter to continue to the next round");
-					//proceed = scan.nextLine();
+					System.out.println("Survivor");
+					System.out.println("Press enter to continue to task selection");
+					proceed = scan.nextLine();
 					break;
 					
 				// Error
@@ -153,10 +162,6 @@ public class main // Game manager class
 		// Idle tasks that occur every round
     	for (int i = 0; i < partySize ; i++)
     	{
-    		//do the idle actions of the party member
-    		System.out.println("\nWhat would you like your " + PARTY[i].role + " to do.");
-    		System.out.println("1) Scavenge\n2) Find timber\n3) Mining");
-    		
     		//THE FOLLOWING IS SHIT CODE, NEVER DO THIS
     		if(PARTY[i].role.equals("Builder"))
     		{
@@ -166,7 +171,7 @@ public class main // Game manager class
 			{
 				PARTY[i].blacksmithIdle();
 			}
-			else if(PARTY[i].role.equals("Medic"))
+			else if(PARTY[i].role.equalsIgnoreCase("Medic"))
 			{
 				PARTY[i].medicIdle();
 			}
@@ -179,7 +184,9 @@ public class main // Game manager class
 			System.out.println("There was an error ");
 			}
 			
-    	}
+		}
+		System.out.println("\n\nPlease press enter to continue to the next round");
+		proceed = scan.nextLine();
 	}
     
 }

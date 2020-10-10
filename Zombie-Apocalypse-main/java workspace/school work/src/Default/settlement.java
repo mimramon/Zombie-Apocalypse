@@ -3,7 +3,7 @@ package Default;
 public class settlement 
 {
 	// VARIABLES - Buildings
-    public int houses = 1;
+    public int houses;
     public boolean workshop;
 
     // VARIABLES - Starting Resources
