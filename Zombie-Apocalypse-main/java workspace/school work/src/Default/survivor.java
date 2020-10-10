@@ -146,7 +146,7 @@ public class survivor
 	// BLACKSMITH IDLE TASKS
 	public void blacksmithIdle()
 	{
-		if(settlement.metal >0 && settlement.workshop == true)
+		if(settlement.metal >0 && settlement.workshop)
     	{
 			System.out.println("4) Make ammo");
 			//#region Builder Tasks (Up to task 5)
@@ -194,7 +194,7 @@ public class survivor
 	// MEDIC IDLE TASKS
 	public void medicIdle()
 	{
-		if(settlement.food >= 10 && settlement.workshop == true)
+		if((settlement.food >= 10) && settlement.workshop)
     	{
 			System.out.println("4) Make meds");
 			//#region Builder Tasks (Up to task 5)
