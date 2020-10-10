@@ -65,7 +65,7 @@ public class survivor
 	}
 	
 	// BUILDER IDLE TASKS
-	public void builderIdle()
+	public void builderIdle(int partyPosition)
 	{
 		System.out.println("\nWhat would you like your builder to do.");
     	System.out.println("1) Scavenge\n2) Find timber\n3) Mining");
@@ -140,12 +140,12 @@ public class survivor
 		}
 		else 
 		{
-			defaultTasks();
+			defaultTasks(partyPosition);
 		}
 	}
 
 	// BLACKSMITH IDLE TASKS
-	public void blacksmithIdle()
+	public void blacksmithIdle(int partyPosition)
 	{
 		System.out.println("\nWhat would you like your blacksmith to do.");
     	System.out.println("1) Scavenge\n2) Find timber\n3) Mining");
@@ -179,7 +179,7 @@ public class survivor
 					else
 					{
 						System.out.println("You do not have enough metal, please choose a different option");
-						blacksmithIdle();
+						blacksmithIdle(partyPosition);
 					}
     				break;
     			default:
@@ -188,12 +188,12 @@ public class survivor
 		}
 		else 
 		{
-			defaultTasks();
+			defaultTasks(partyPosition);
 		}
 	}
 
 	// MEDIC IDLE TASKS
-	public void medicIdle()
+	public void medicIdle(int partyPosition)
 	{
 		System.out.println("\nWhat would you like your medic to do.");
     	System.out.println("1) Scavenge\n2) Find timber\n3) Mining");
@@ -229,7 +229,7 @@ public class survivor
 					else
 					{
 						System.out.println("You do not have enough food, please choose a different option");
-						medicIdle();
+						medicIdle(partyPosition);
 					}
 					
     				break;
@@ -240,36 +240,50 @@ public class survivor
 		}
 		else 
 		{
-			defaultTasks();
+			defaultTasks(partyPosition);
 		}
 		
 	}
 
 	// HUNTER IDLE TASKS
-	public void hunterIdle()
+	public void hunterIdle(int partyPosition)
 	{
 		System.out.println("\nWhat would you like your hunter to do.");
     	System.out.println("1) Scavenge\n2) Find timber\n3) Mining");
-		defaultTasks();
+		defaultTasks(partyPosition);
 	}
 
-	public void defaultTasks() 
+	public void defaultTasks(int partyPosition) 
 	{
 		userInput = scan.nextInt();
 		switch (userInput) 
 		{
+			// Scavenging
 			case 1:
-				randomNum = rand.nextInt(Default.main.partySize * 2);
+				if(main.PARTY[partyPosition].role.equals("Hunter"))
+				{
+					int max = main.PARTY[partyPosition].scavenging * 3;
+					int min = Default.main.partySize;
+					randomNum = rand.nextInt(max + 1 - min) + min;
+				}
+				else
+				{
+					int max = main.PARTY[partyPosition].scavenging * 3;
+					int min = 0;
+					randomNum = rand.nextInt(max + 1 - min) + min;
+				}
 				System.out.println("You have found " + randomNum + " food!");
 				main.settlement.food = main.settlement.food + randomNum;
 				System.out.println("You now have " + main.settlement.food + " food");
 				break;
+			// Wood
 			case 2:
 				randomNum = rand.nextInt(Default.main.partySize * 2);
 				System.out.println("You have found " + randomNum + " wood!");
 				main.settlement.wood = main.settlement.wood + randomNum;
 				System.out.println("You now have " + main.settlement.wood + " wood");
 				break;
+			// Metal
 			case 3:
 				randomNum = rand.nextInt(Default.main.partySize * 2);
 				System.out.println("You have mined " + randomNum + " metal!");

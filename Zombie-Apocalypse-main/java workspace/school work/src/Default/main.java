@@ -165,19 +165,19 @@ public class main // Game manager class
     		//THE FOLLOWING IS SHIT CODE, NEVER DO THIS
     		if(PARTY[i].role.equals("Builder"))
     		{
-				PARTY[i].builderIdle();
+				PARTY[i].builderIdle(i);
 			}
 			else if(PARTY[i].role.equals("Blacksmith"))
 			{
-				PARTY[i].blacksmithIdle();
+				PARTY[i].blacksmithIdle(i);
 			}
 			else if(PARTY[i].role.equalsIgnoreCase("Medic"))
 			{
-				PARTY[i].medicIdle();
+				PARTY[i].medicIdle(i);
 			}
 			else if(PARTY[i].role.equals("Hunter"))
 			{
-				PARTY[i].hunterIdle();
+				PARTY[i].hunterIdle(i);
 			}
 			else 
 			{
