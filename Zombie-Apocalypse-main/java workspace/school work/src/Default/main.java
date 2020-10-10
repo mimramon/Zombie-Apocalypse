@@ -168,7 +168,7 @@ public class main // Game manager class
 			{
 				PARTY[i].blacksmithIdle();
 			}
-			else if(PARTY[i].role.equals("Medic"))
+			else if(PARTY[i].role.equalsIgnoreCase("Medic"))
 			{
 				PARTY[i].medicIdle();
 			}
