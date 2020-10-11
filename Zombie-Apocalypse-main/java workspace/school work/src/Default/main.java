@@ -31,19 +31,10 @@ public class main // Game manager class
 		// Creates starting party
 		partySize = 4;
 		
-		PARTY[0] = new survivor();
-        PARTY[0].role ="Hunter";
-        PARTY[0].setStats();
-        PARTY[1] = new survivor();
-        PARTY[1].role ="Blacksmith";
-        PARTY[1].setStats();
-        PARTY[2] = new survivor();
-        PARTY[2].role ="Builder";
-        PARTY[2].setStats();
-        PARTY[3] = new survivor();
-        PARTY[3].role ="Medic";
-		PARTY[3].setStats();
-		
+		PARTY[0] = new hunter();
+        PARTY[1] = new blacksmith();
+        PARTY[2] = new builder();
+        PARTY[3] = new medic();
 		
         //Creates starting settlement
 		settlement.setSettlement();
@@ -162,28 +153,7 @@ public class main // Game manager class
 		// Idle tasks that occur every round
     	for (int i = 0; i < partySize ; i++)
     	{
-    		//THE FOLLOWING IS SHIT CODE, NEVER DO THIS
-    		if(PARTY[i].role.equals("Builder"))
-    		{
-				PARTY[i].builderIdle(i);
-			}
-			else if(PARTY[i].role.equals("Blacksmith"))
-			{
-				PARTY[i].blacksmithIdle(i);
-			}
-			else if(PARTY[i].role.equalsIgnoreCase("Medic"))
-			{
-				PARTY[i].medicIdle(i);
-			}
-			else if(PARTY[i].role.equals("Hunter"))
-			{
-				PARTY[i].hunterIdle(i);
-			}
-			else 
-			{
-			System.out.println("There was an error ");
-			}
-			
+			PARTY[i].idle(i);	
 		}
 		System.out.println("\n\nPlease press enter to continue to the next round");
 		proceed = scan.nextLine();
