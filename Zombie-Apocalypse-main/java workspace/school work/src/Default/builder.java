@@ -13,7 +13,6 @@ public class builder extends survivor
     // BUILDER IDLE TASKS
 	public void idle(int partyPosition)
 	{
-		System.out.println("DEBUG");
 		System.out.println("\nWhat would you like your builder to do.");
     	System.out.println("1) Scavenge\n2) Find timber\n3) Mining");
 		if(main.settlement.wood >=10)
