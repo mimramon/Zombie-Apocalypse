@@ -32,7 +32,7 @@ public class main // Game manager class
 		partySize = 4;
 		
 		PARTY[0] = new hunter();
-        PARTY[1] = new blacksmith();
+        PARTY[1] = new hunter();
         PARTY[2] = new builder();
         PARTY[3] = new medic();
 		
