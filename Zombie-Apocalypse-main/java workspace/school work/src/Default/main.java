@@ -68,7 +68,7 @@ public class main // Game manager class
 					for(int i = 0; i < hordeSize; i++)
 					{
 						HORDE[i] = new zombie();
-						HORDE[i].role = rand.nextInt(3);
+						HORDE[i].role = HORDE[i].zombieTypes[rand.nextInt(3)];
 						HORDE[i].setStats();
 						System.out.println("-" + HORDE[i].role);
 					}
@@ -95,16 +95,16 @@ public class main // Game manager class
 						System.out.println("How much ammo would like to use. 1 ammo equates to +1 combat strength");
 						System.out.println("You have " + settlement.ammo + " available to use");
 						userInput = scan.nextLine();
-						if (parseInt(userInput) > settlement.ammo)
+						if (Integer.parseInt(userInput) > settlement.ammo)
 						{
 							System.out.println("You do not have enough ammo for that");
 							break;
 						}
-						else if (parseInt(userInput) <= settlement.ammo)
+						else if (Integer.parseInt(userInput) <= settlement.ammo)
 						{
-							partyPower += parseInt(userInput);
+							partyPower += Integer.parseInt(userInput);
 							System.out.println("Your total combat power is now " + partyPower);
-							settlement.ammo -= parseInt(userInput);
+							settlement.ammo -= Integer.parseInt(userInput);
 						}
 						else 
 						{
@@ -244,7 +244,7 @@ public class main // Game manager class
 					for(int i = 0; i < hordeSize; i++)
 					{
 						HORDE[i] = new zombie();
-						HORDE[i].role = rand.nextInt(3);
+						HORDE[i].role = HORDE[i].zombieTypes[rand.nextInt(3)];
 						HORDE[i].setStats();
 						System.out.println("-" + HORDE[i].role);
 					}
@@ -271,16 +271,16 @@ public class main // Game manager class
 						System.out.println("How much ammo would like to use. 1 ammo equates to +1 combat strength");
 						System.out.println("You have " + settlement.ammo + " available to use");
 						userInput = scan.nextLine();
-						if (parseInt(userInput) > settlement.ammo)
+						if (Integer.parseInt(userInput) > settlement.ammo)
 						{
 							System.out.println("You do not have enough ammo for that");
 							break;
 						}
-						else if (parseInt(userInput) <= settlement.ammo)
+						else if (Integer.parseInt(userInput) <= settlement.ammo)
 						{
-							partyPower += parseInt(userInput);
+							partyPower += Integer.parseInt(userInput);
 							System.out.println("Your total combat power is now " + partyPower);
-							settlement.ammo -= parseInt(userInput);
+							settlement.ammo -= Integer.parseInt(userInput);
 						}
 						else 
 						{
