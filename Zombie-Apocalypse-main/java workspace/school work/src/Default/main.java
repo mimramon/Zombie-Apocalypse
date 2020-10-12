@@ -132,7 +132,31 @@ public class main // Game manager class
 
 				// Survivor event
         		case 5:
-					System.out.println("Survivor");
+					if(partySize < settlement.houses/4)
+					{
+						partySize++;
+						int random = rand.nextInt(4);
+						switch (random)
+						{
+							case 0:
+								PARTY[partySize-1] = new hunter();
+								break;
+							case 1:
+								PARTY[partySize-1] = new blacksmith();
+								break;
+							case 2:
+								PARTY[partySize-1] = new builder();
+								break;
+							case 3:
+								PARTY[partySize-1] = new medic();
+								break;
+							default:
+								System.out.println("There was an error adding a new survivor");
+								break;
+						}
+						System.out.println("You found a " + PARTY[partySize-1].role + ". They have joined your party!");
+					}
+
 					System.out.println("Press enter to continue to task selection");
 					proceed = scan.nextLine();
 					break;
