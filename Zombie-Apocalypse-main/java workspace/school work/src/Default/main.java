@@ -314,8 +314,6 @@ public class main // Game manager class
 				}
 			}
 		}
-	
-		System.out.println("How much of your ammo would you like to use");
 		System.out.println("Press enter to continue to task selection");
 		proceed = scan.nextLine();
 					
