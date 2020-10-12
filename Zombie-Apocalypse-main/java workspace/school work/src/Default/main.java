@@ -9,12 +9,14 @@ public class main // Game manager class
     public static Random rand = new Random();
     public static String proceed;
 	public static survivor[] PARTY = new survivor[20];
+	public static zombie[] HORDE = new zombie[40]; 
 	public static settlement settlement = new settlement();
 	public static int partySize;
+	public static int hordeSize;
     public static int round = 1;
     public static boolean isDead = false;
     public static int event;
-    public static String userInput;
+	public static String userInput;
     
     public static void main(String[] args) // Start function
     {
@@ -60,9 +62,141 @@ public class main // Game manager class
         	switch (event)
         	{
 				// Zombie event
-        		case 0:
-        			System.out.println("You are attacked by a horde of zombies\nPress enter to continue to the next round");
-					//proceed = scan.nextLine();
+				case 0:
+					hordeSize = rand.nextInt(partySize*2);
+					System.out.println("You have encountered:");
+					for(int i = 0; i < hordeSize; i++)
+					{
+						HORDE[i] = new zombie();
+						HORDE[i].role = rand.nextInt(3);
+						HORDE[i].setStats();
+						System.out.println("-" + HORDE[i].role);
+					}
+
+					System.out.println("The horde consists of " + hordeSize + " zombies");
+					
+					int partyPower = 0;
+					for(int i = 0; i < partySize - 1; i++)
+					{
+						partyPower += PARTY[i].combatStrength;
+					}
+
+					int hordePower = 0;
+					for(int i = 0; i < partySize - 1; i++)
+					{
+						hordePower += PARTY[i].combatStrength;
+					}
+
+					System.out.println("\nYour total combat power is: " + partyPower + "\nThe total combat power of the horde is: " + hordePower);
+					System.out.println("Would you like to use ammo to increase your total combat power or potentially risk the life of a survivor? ( Yes/No )");
+					userInput = scan.nextLine();
+					if (userInput.equalsIgnoreCase("Yes"))
+					{
+						System.out.println("How much ammo would like to use. 1 ammo equates to +1 combat strength");
+						System.out.println("You have " + settlement.ammo + " available to use");
+						userInput = scan.nextLine();
+						if (parseInt(userInput) > settlement.ammo)
+						{
+							System.out.println("You do not have enough ammo for that");
+							break;
+						}
+						else if (parseInt(userInput) <= settlement.ammo)
+						{
+							partyPower += parseInt(userInput);
+							System.out.println("Your total combat power is now " + partyPower);
+							settlement.ammo -= parseInt(userInput);
+						}
+						else 
+						{
+							System.out.println("Please use a number for this value");
+							break;
+						}
+					}
+					else if(userInput.equalsIgnoreCase("No"))
+					{
+						System.out.println("You have chosen not to increase your total combat strength, placing a survivor at risk");
+					}
+					else 
+					{
+						System.out.println("Please enter yes or no");
+						break;
+					}
+
+					if((partyPower - hordePower) >= 1)
+					{
+						System.out.println("You have emerged victorious! Your survivors will live to see another day.");
+					}
+					else if ((partyPower - hordePower) <= -1)
+					{
+						System.out.println("Your party was outclassed by the zombie horde, your most recent survivor has been fatally wounded");
+						if(settlement.meds > 0)
+						{
+							System.out.println("Would you like to use 1 med to save this survivor? ( Yes/No )");
+							userInput = scan.nextLine();
+							if(userInput.equalsIgnoreCase("Yes"))
+							{
+								settlement.meds--;
+								System.out.println("You saved them");
+							}
+							else if(userInput.equalsIgnoreCase("No"))
+							{
+								System.out.println("YOU MONSTER! YOU HAD ENOUGH MEDS TO SAVE THEIR LIFE AND YOU CHOSE NOT TO!!!");
+								PARTY[partySize-1] = null;
+								partySize--;
+							}
+							else 
+							{
+								System.out.println("Please enter yes or no");
+								break;
+							}
+						}
+						else 
+						{
+							System.out.println("They have perished");
+						}
+					}
+					else 
+					{
+						System.out.println("Your party is evenly matched with the horde. The gods will decide your fate..");
+						int randomNum = rand.nextInt(2);
+						if(randomNum == 0)
+						{
+							System.out.println("You have emerged victorious! Your survivors will live to see another day.");
+						}
+						else 
+						{
+							System.out.println("The odds were not in your favour, your most recent survivor has been fatally wounded");
+							if(settlement.meds > 0)
+							{
+								System.out.println("Would you like to use 1 med to save this survivor? ( Yes/No )");
+								userInput = scan.nextLine();
+								if(userInput.equalsIgnoreCase("Yes"))
+								{
+									settlement.meds--;
+									System.out.println("You saved them");
+								}
+								else if(userInput.equalsIgnoreCase("No"))
+								{
+									System.out.println("YOU MONSTER! YOU HAD ENOUGH MEDS TO SAVE THEIR LIFE AND YOU CHOSE NOT TO!!!");
+									PARTY[partySize-1] = null;
+									partySize--;
+								}
+								else 
+								{
+									System.out.println("Please enter yes or no");
+									break;
+								}
+							}
+							else 
+							{
+								System.out.println("They have perished");
+							}
+						}
+					}
+
+					System.out.println("How much of your ammo would you like to use");
+					System.out.println("Press enter to continue to task selection");
+					proceed = scan.nextLine();
 					break;
 
 				// Resource event
@@ -105,7 +239,138 @@ public class main // Game manager class
 
 				// Another zombie event (To increase the chances of it occurring)
         		case 2:
-					System.out.println("You are attacked by a horde of zombies");
+					hordeSize = rand.nextInt(partySize*2);
+					System.out.println("You have encountered:");
+					for(int i = 0; i < hordeSize; i++)
+					{
+						HORDE[i] = new zombie();
+						HORDE[i].role = rand.nextInt(3);
+						HORDE[i].setStats();
+						System.out.println("-" + HORDE[i].role);
+					}
+				
+					System.out.println("The horde consists of " + hordeSize + " zombies");
+					
+					partyPower = 0;
+					for(int i = 0; i < partySize - 1; i++)
+					{
+						partyPower += PARTY[i].combatStrength;
+					}
+				
+					hordePower = 0;
+					for(int i = 0; i < partySize - 1; i++)
+					{
+						hordePower += PARTY[i].combatStrength;
+					}
+				
+					System.out.println("\nYour total combat power is: " + partyPower + "\nThe total combat power of the horde is: " + hordePower);
+					System.out.println("Would you like to use ammo to increase your total combat power or potentially risk the life of a survivor? ( Yes/No )");
+					userInput = scan.nextLine();
+					if (userInput.equalsIgnoreCase("Yes"))
+					{
+						System.out.println("How much ammo would like to use. 1 ammo equates to +1 combat strength");
+						System.out.println("You have " + settlement.ammo + " available to use");
+						userInput = scan.nextLine();
+						if (parseInt(userInput) > settlement.ammo)
+						{
+							System.out.println("You do not have enough ammo for that");
+							break;
+						}
+						else if (parseInt(userInput) <= settlement.ammo)
+						{
+							partyPower += parseInt(userInput);
+							System.out.println("Your total combat power is now " + partyPower);
+							settlement.ammo -= parseInt(userInput);
+						}
+						else 
+						{
+							System.out.println("Please use a number for this value");
+							break;
+						}
+					}
+					else if(userInput.equalsIgnoreCase("No"))
+					{
+						System.out.println("You have chosen not to increase your total combat strength, placing a survivor at risk");
+					}
+					else 
+					{
+						System.out.println("Please enter yes or no");
+						break;
+					}
+				
+					if((partyPower - hordePower) >= 1)
+					{
+						System.out.println("You have emerged victorious! Your survivors will live to see another day.");
+					}
+					else if ((partyPower - hordePower) <= -1)
+					{
+						System.out.println("Your party was outclassed by the zombie horde, your most recent survivor has been fatally wounded");
+						if(settlement.meds > 0)
+						{
+							System.out.println("Would you like to use 1 med to save this survivor? ( Yes/No )");
+							userInput = scan.nextLine();
+							if(userInput.equalsIgnoreCase("Yes"))
+							{
+								settlement.meds--;
+								System.out.println("You saved them");
+							}
+							else if(userInput.equalsIgnoreCase("No"))
+							{
+								System.out.println("YOU MONSTER! YOU HAD ENOUGH MEDS TO SAVE THEIR LIFE AND YOU CHOSE NOT TO!!!");
+								PARTY[partySize-1] = null;
+								partySize--;
+							}
+							else 
+							{
+								System.out.println("Please enter yes or no");
+								break;
+							}
+						}
+						else 
+						{
+							System.out.println("They have perished");
+						}
+					}
+					else 
+					{
+						System.out.println("Your party is evenly matched with the horde. The gods will decide your fate..");
+						int randomNum = rand.nextInt(2);
+						if(randomNum == 0)
+						{
+							System.out.println("You have emerged victorious! Your survivors will live to see another day.");
+						}
+						else 
+						{
+							System.out.println("The odds were not in your favour, your most recent survivor has been fatally wounded");
+							if(settlement.meds > 0)
+							{
+								System.out.println("Would you like to use 1 med to save this survivor? ( Yes/No )");
+								userInput = scan.nextLine();
+								if(userInput.equalsIgnoreCase("Yes"))
+								{
+									settlement.meds--;
+									System.out.println("You saved them");
+								}
+								else if(userInput.equalsIgnoreCase("No"))
+								{
+									System.out.println("YOU MONSTER! YOU HAD ENOUGH MEDS TO SAVE THEIR LIFE AND YOU CHOSE NOT TO!!!");
+									PARTY[partySize-1] = null;
+									partySize--;
+								}
+								else 
+								{
+									System.out.println("Please enter yes or no");
+									break;
+								}
+							}
+							else 
+							{
+								System.out.println("They have perished");
+							}
+						}
+					}
+				
+					System.out.println("How much of your ammo would you like to use");
 					System.out.println("Press enter to continue to task selection");
 					proceed = scan.nextLine();
 					break;
@@ -132,7 +397,7 @@ public class main // Game manager class
 
 				// Survivor event
         		case 5:
-					if(partySize < settlement.houses/4)
+					if(partySize < settlement.houses*4)
 					{
 						partySize++;
 						int random = rand.nextInt(4);
@@ -156,6 +421,10 @@ public class main // Game manager class
 						}
 						System.out.println("You found a " + PARTY[partySize-1].role + ". They have joined your party!");
 					}
+					else
+					{
+						System.out.println("A survivor tried to join your party but you had no space. RIP");
+					}
 
 					System.out.println("Press enter to continue to task selection");
 					proceed = scan.nextLine();
@@ -168,8 +437,12 @@ public class main // Game manager class
         	}
         	
         	idleTasks();
-        	round++;
-        }
+			round++;
+			if (partySize < 1)
+			{
+				isDead = true;
+			}	
+		}	
 	}
 	
 	public static void idleTasks()
