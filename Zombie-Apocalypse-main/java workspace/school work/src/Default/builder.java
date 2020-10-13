@@ -23,6 +23,11 @@ public class builder extends survivor
 					System.out.println("5) Build a workshop");
 					//#region Builder Tasks (Up to task 5)
     				userInput = scan.nextInt();
+    				while(!((userInput == 1) || (userInput == 2) || (userInput == 3) || (userInput == 4) || (userInput == 5)))
+    	    		{
+    	    			System.out.println("Please enter a valid answer");
+    	    			userInput = scan.nextInt();
+    	    		}
     				switch (userInput) 
     				{
     					case 1:
@@ -57,6 +62,11 @@ public class builder extends survivor
 				{
 					//#region Builder Tasks (Up to option 4)
 					userInput = scan.nextInt();
+					while(!((userInput == 1) || (userInput == 2) || (userInput == 3) || (userInput == 4)))
+		    		{
+		    			System.out.println("Please enter a valid answer");
+		    			userInput = scan.nextInt();
+		    		}
     				switch (userInput) 
     				{
     					case 1:

@@ -20,6 +20,11 @@ public class medic extends survivor
 			System.out.println("4) Make meds");
 			//#region Builder Tasks (Up to task 5)
     		userInput = scan.nextInt();
+    		while(!((userInput == 1) || (userInput == 2) || (userInput == 3) || (userInput == 4)))
+    		{
+    			System.out.println("Please enter a valid answer");
+    			userInput = scan.nextInt();
+    		}
     		switch (userInput) 
     		{
     			case 1:
