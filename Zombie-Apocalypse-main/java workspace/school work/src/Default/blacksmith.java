@@ -2,6 +2,8 @@ package Default;
 
 public class blacksmith extends survivor
 {
+	public static JFrame JFrame = new JFrame();
+	
     public blacksmith()
     {
 		role = "Blacksmith";

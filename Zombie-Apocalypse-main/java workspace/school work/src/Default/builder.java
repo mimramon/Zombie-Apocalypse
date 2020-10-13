@@ -2,6 +2,8 @@ package Default;
 
 public class builder extends survivor
 {
+	public static JFrame JFrame = new JFrame();
+
 	public builder()
 	{
 		role = "Builder";

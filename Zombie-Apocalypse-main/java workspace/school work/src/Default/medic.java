@@ -2,6 +2,8 @@ package Default;
 
 public class medic extends survivor
 {
+	public static JFrame JFrame = new JFrame();
+	
     public medic()
     {
         role = "Medic";

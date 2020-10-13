@@ -5,6 +5,8 @@ import java.util.*;
 
 public class survivor 
 {
+	public static JFrame JFrame = new JFrame();
+	
 	// VARIABLES - Unused
 	public boolean isHunting;
 	

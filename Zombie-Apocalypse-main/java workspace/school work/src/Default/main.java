@@ -2,6 +2,7 @@ package Default;
 
 // Imports
 import java.util.*;
+import javax.swing.*;
 
 public class main // Game manager class
 {
@@ -11,6 +12,7 @@ public class main // Game manager class
 	public static survivor[] PARTY = new survivor[20];
 	public static zombie[] HORDE = new zombie[40]; 
 	public static settlement settlement = new settlement();
+	public static JFrame JFrame = new JFrame();
 	public static int partySize;
 	public static int hordeSize;
     public static int round = 1;
@@ -20,8 +22,12 @@ public class main // Game manager class
     
     public static void main(String[] args) // Start function
     {
-        System.out.println("Welcome to Zombie Apocalypse.\nPress enter to continue.");
-        proceed = scan.nextLine();
+		JFrame.main(args);
+		JFrame.setVisible(true);
+		JFrame.outputTextArea.append("\nWelcome to Zombie Apocalypse.\nPress enter to continue.");
+		
+		
+		proceed = scan.nextLine();
 		
 		startGame();
 
@@ -40,20 +46,21 @@ public class main // Game manager class
 		
         //Creates starting settlement
 		settlement.setSettlement();
-		System.out.println("You are starting the game with:");
-		System.out.println("- " + settlement.houses + " house");
-		System.out.println("- " + settlement.wood + " wood");
-		System.out.println("- " + settlement.metal + " metal");
-		System.out.println("- " + settlement.food + " food");
-		System.out.println("- " + settlement.meds + " meds");
-		System.out.println("- " + settlement.ammo + " ammo");
+		JFrame.setVisible(true);
+		JFrame.outputTextArea.append("\nYou are starting the game with:");
+		JFrame.outputTextArea.append("\n- " + settlement.houses + " house");
+		JFrame.outputTextArea.append("\n- " + settlement.wood + " wood");
+		JFrame.outputTextArea.append("\n- " + settlement.metal + " metal");
+		JFrame.outputTextArea.append("\n- " + settlement.food + " food");
+		JFrame.outputTextArea.append("\n- " + settlement.meds + " meds");
+		JFrame.outputTextArea.append("\n- " + settlement.ammo + " ammo");
 	}
 
 	public static void roundManager()
 	{
 		while(round <= 100 && !isDead)
         {
-        	System.out.println("\nYou are now starting round "+round);
+        	JFrame.outputTextArea.append("\n\nYou are now starting round "+round);
 			
 			// In-game event handler
 			
@@ -71,36 +78,36 @@ public class main // Game manager class
 					String[] resourceArray = {"wood", "metal", "meds", "ammo"};
 					int newResource = rand.nextInt(resourceArray.length);
 					int newResourceAmount = rand.nextInt(partySize * 5);
-					System.out.println("Congratulations! You have found " + newResourceAmount + " " + resourceArray[newResource]);
+					JFrame.outputTextArea.append("\nCongratulations! You have found " + newResourceAmount + " " + resourceArray[newResource]);
 				
 					switch (resourceArray[newResource])
 					{
 						// Case for if the resource is wood
 						case "wood":
 							settlement.wood = settlement.wood + newResourceAmount;
-							System.out.println("You now have " + settlement.wood + " wood");
+							JFrame.outputTextArea.append("\nYou now have " + settlement.wood + " wood");
 							break;
 						// Case for if the resource is metal
 						case "metal":
 							settlement.meds = settlement.meds + newResourceAmount;
-							System.out.println("You now have " + settlement.meds + " metal");
+							JFrame.outputTextArea.append("\nYou now have " + settlement.meds + " metal");
 							break;
 						// Case for if the resource is meds
 						case "meds":
 							settlement.meds = settlement.meds + newResourceAmount;
-							System.out.println("You now have " + settlement.meds + " meds");
+							JFrame.outputTextArea.append("\nYou now have " + settlement.meds + " meds");
 							break;
 						// Case for if the resource is ammo
 						case "ammo":
 							settlement.ammo = settlement.ammo + newResourceAmount;
-							System.out.println("You now have " + settlement.ammo + " ammo");
+							JFrame.outputTextArea.append("\nYou now have " + settlement.ammo + " ammo");
 							break;
 						// Error
 						default:
-							System.out.println("There was an error collecting the resources");
+							JFrame.outputTextArea.append("\nThere was an error collecting the resources");
 							break;
 					}
-					System.out.println("Press enter to continue to task selection");
+					JFrame.outputTextArea.append("\nPress enter to continue to task selection");
 					proceed = scan.nextLine();
 					break;
 
@@ -113,19 +120,19 @@ public class main // Game manager class
 				case 3: 
 					// Randomly generates an amount of food for the survivors to find
 					int newfood = rand.nextInt(partySize * 2);
-					System.out.println("You have found " + newfood + " food.");
+					JFrame.outputTextArea.append("\nYou have found " + newfood + " food.");
 					
 					// Updates the total amount of food available
 					settlement.food = settlement.food + newfood;
-					System.out.println("You now have " + settlement.food + " food.");
-					System.out.println("Press enter to continue to task selection");
+					JFrame.outputTextArea.append("\nYou now have " + settlement.food + " food.");
+					JFrame.outputTextArea.append("\nPress enter to continue to task selection");
 					proceed = scan.nextLine();
 					break;
 
 				// Nothing happens
         		case 4:
-					System.out.println("Nothing has has happened this round");
-					System.out.println("Press enter to continue to task selection");
+					JFrame.outputTextArea.append("\nNothing has has happened this round");
+					JFrame.outputTextArea.append("\nPress enter to continue to task selection");
 					proceed = scan.nextLine();
 					break;
 
@@ -136,7 +143,7 @@ public class main // Game manager class
 					
 				// Error
         		default:
-        			System.out.println("There was an error starting the round");
+        			JFrame.outputTextArea.append("\nThere was an error starting the round");
         			break;
         	}
         	
@@ -156,7 +163,7 @@ public class main // Game manager class
     	{
 			PARTY[i].idle(i);	
 		}
-		System.out.println("\n\nPlease press enter to continue to the next round");
+		JFrame.outputTextArea.append("\n\n\nPlease press enter to continue to the next round");
 		proceed = scan.nextLine();
 	}
 	
@@ -181,33 +188,33 @@ public class main // Game manager class
 					PARTY[partySize-1] = new medic();
 					break;
 				default:
-					System.out.println("There was an error adding a new survivor");
+					JFrame.outputTextArea.append("\nThere was an error adding a new survivor");
 					break;
 			}
-			System.out.println("You found a " + PARTY[partySize-1].role + ". They have joined your party!");
+			JFrame.outputTextArea.append("\nYou found a " + PARTY[partySize-1].role + ". They have joined your party!");
 		}
 		else
 		{
-			System.out.println("A survivor tried to join your party but you had no space. RIP");
+			JFrame.outputTextArea.append("\nA survivor tried to join your party but you had no space. RIP");
 		}
 
-		System.out.println("Press enter to continue to task selection");
+		JFrame.outputTextArea.append("\nPress enter to continue to task selection");
 		proceed = scan.nextLine();
 	}
 
 	public static void zombieEvent()
 	{
 		hordeSize = rand.nextInt(partySize*2);
-		System.out.println("You have encountered:");
+		JFrame.outputTextArea.append("\nYou have encountered:");
 		for(int i = 0; i < hordeSize; i++)
 		{
 			HORDE[i] = new zombie();
 			HORDE[i].role = HORDE[i].zombieTypes[rand.nextInt(3)];
 			HORDE[i].setStats();
-			System.out.println("-" + HORDE[i].role);
+			JFrame.outputTextArea.append("\n-" + HORDE[i].role);
 		}
 	
-		System.out.println("The horde consists of " + hordeSize + " zombies");
+		JFrame.outputTextArea.append("\nThe horde consists of " + hordeSize + " zombies");
 		
 		int partyPower = 0;
 		for(int i = 0; i < partySize - 1; i++)
@@ -221,38 +228,38 @@ public class main // Game manager class
 			hordePower += PARTY[i].combatStrength;
 		}
 	
-		System.out.println("\nYour total combat power is: " + partyPower + "\nThe total combat power of the horde is: " + hordePower);
-		System.out.println("Would you like to use ammo to increase your total combat power or potentially risk the life of a survivor? ( Yes/No )");
+		JFrame.outputTextArea.append("\n\nYour total combat power is: " + partyPower + "\nThe total combat power of the horde is: " + hordePower);
+		JFrame.outputTextArea.append("\nWould you like to use ammo to increase your total combat power or potentially risk the life of a survivor? ( Yes/No )");
 		userInput = scan.nextLine();
 		while(!(userInput.equalsIgnoreCase("Yes") || userInput.equalsIgnoreCase("No")))
 		{
-			System.out.println("Please enter a valid answer");
+			JFrame.outputTextArea.append("\nPlease enter a valid answer");
 		}
 
 		if(userInput.equalsIgnoreCase("Yes"))
 		{
-			System.out.println("How much ammo would you like to use. 1 ammo equates to +1 combat strength");
-			System.out.println("You have " + settlement.ammo + " available to use");
+			JFrame.outputTextArea.append("\nHow much ammo would you like to use. 1 ammo equates to +1 combat strength");
+			JFrame.outputTextArea.append("\nYou have " + settlement.ammo + " available to use");
 			userInput = scan.nextLine();
 			while(!(Integer.parseInt(userInput) <= settlement.ammo))
 			{
-				System.out.println("Please enter a valid value");
+				JFrame.outputTextArea.append("\nPlease enter a valid value");
 			}
 			partyPower += Integer.parseInt(userInput);
-			System.out.println("Your total combat power is now " + partyPower);
+			JFrame.outputTextArea.append("\nYour total combat power is now " + partyPower);
 			settlement.ammo -= Integer.parseInt(userInput);
 		}
 
 		if((partyPower - hordePower) >= 1)
 		{
-			System.out.println("You have emerged victorious! Your survivors will live to see another day.");
+			JFrame.outputTextArea.append("\nYou have emerged victorious! Your survivors will live to see another day.");
 		}
 		else if ((partyPower - hordePower) <= -1)
 		{
-			System.out.println("Your party was outclassed by the zombie horde, your most recent survivor has been fatally wounded");
+			JFrame.outputTextArea.append("\nYour party was outclassed by the zombie horde, your most recent survivor has been fatally wounded");
 			if(settlement.meds > 0)
 			{
-				System.out.println("Would you like to use 1 med to save this survivor? ( Yes/No )");
+				JFrame.outputTextArea.append("\nWould you like to use 1 med to save this survivor? ( Yes/No )");
 				userInput = scan.nextLine();
 				while(!(userInput.equalsIgnoreCase("yes") || userInput.equalsIgnoreCase("no")))
 				{
@@ -262,59 +269,59 @@ public class main // Game manager class
 				if(userInput.equalsIgnoreCase("Yes"))
 				{
 					settlement.meds--;
-					System.out.println("You saved them");
+					JFrame.outputTextArea.append("\nYou saved them");
 				}
 				else if(userInput.equalsIgnoreCase("No"))
 				{
-					System.out.println("YOU MONSTER! YOU HAD ENOUGH MEDS TO SAVE THEIR LIFE AND YOU CHOSE NOT TO!!!");
+					JFrame.outputTextArea.append("\nYOU MONSTER! YOU HAD ENOUGH MEDS TO SAVE THEIR LIFE AND YOU CHOSE NOT TO!!!");
 					PARTY[partySize-1] = null;
 					partySize--;
 				}
 			}
 			else 
 			{
-				System.out.println("They have perished");
+				JFrame.outputTextArea.append("\nThey have perished");
 				PARTY[partySize-1] = null;
 				partySize--;
 			}
 		}
 		else 
 		{
-			System.out.println("Your party is evenly matched with the horde. The gods will decide your fate..");
+			JFrame.outputTextArea.append("\nYour party is evenly matched with the horde. The gods will decide your fate..");
 			int randomNum = rand.nextInt(2);
 			if(randomNum == 0)
 			{
-				System.out.println("You have emerged victorious! Your survivors will live to see another day.");
+				JFrame.outputTextArea.append("\nYou have emerged victorious! Your survivors will live to see another day.");
 			}
 			else 
 			{
-				System.out.println("The odds were not in your favour, your most recent survivor has been fatally wounded");
+				JFrame.outputTextArea.append("\nThe odds were not in your favour, your most recent survivor has been fatally wounded");
 				if(settlement.meds > 0)
 				{
-					System.out.println("Would you like to use 1 med to save this survivor? ( Yes/No )");
+					JFrame.outputTextArea.append("\nWould you like to use 1 med to save this survivor? ( Yes/No )");
 					userInput = scan.nextLine();
 					while(!(userInput.equalsIgnoreCase("yes") || userInput.equalsIgnoreCase("no")))
 					if(userInput.equalsIgnoreCase("Yes"))
 					{
 						settlement.meds--;
-						System.out.println("You saved them");
+						JFrame.outputTextArea.append("\nYou saved them");
 					}
 					else if(userInput.equalsIgnoreCase("No"))
 					{
-						System.out.println("YOU MONSTER! YOU HAD ENOUGH MEDS TO SAVE THEIR LIFE AND YOU CHOSE NOT TO!!!");
+						JFrame.outputTextArea.append("\nYOU MONSTER! YOU HAD ENOUGH MEDS TO SAVE THEIR LIFE AND YOU CHOSE NOT TO!!!");
 						PARTY[partySize-1] = null;
 						partySize--;
 					}
 				}
 				else 
 				{
-					System.out.println("They have perished");
+					JFrame.outputTextArea.append("\nThey have perished");
 					PARTY[partySize-1] = null;
 					partySize--;
 				}
 			}
 		}
-		System.out.println("Press enter to continue to task selection");
+		JFrame.outputTextArea.append("\nPress enter to continue to task selection");
 		proceed = scan.nextLine();
 					
 	}

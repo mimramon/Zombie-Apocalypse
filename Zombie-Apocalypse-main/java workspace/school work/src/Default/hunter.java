@@ -2,6 +2,8 @@ package Default;
 
 public class hunter extends survivor
 {
+    public static JFrame JFrame = new JFrame();
+    
     public hunter()
     {
         role = "Hunter";

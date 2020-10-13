@@ -2,6 +2,8 @@ package Default;
 
 public class settlement 
 {
+    public static JFrame JFrame = new JFrame();
+    
 	// VARIABLES - Buildings
     public int houses;
     public boolean workshop;
