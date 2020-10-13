@@ -52,23 +52,23 @@ public class survivor
 					int min = 0;
 					randomNum = rand.nextInt(max + 1 - min) + min;
 				}
-				System.out.println("You have found " + randomNum + " food!");
+				Default.main.JFrame.outputTextArea.append("\nYou have found " + randomNum + " food!");
 				main.settlement.food = main.settlement.food + randomNum;
-				System.out.println("You now have " + main.settlement.food + " food");
+				Default.main.JFrame.outputTextArea.append("\nYou now have " + main.settlement.food + " food");
 				break;
 			// Wood
 			case 2:
 				randomNum = rand.nextInt(Default.main.partySize * 2);
-				System.out.println("You have found " + randomNum + " wood!");
+				Default.main.JFrame.outputTextArea.append("\nYou have found " + randomNum + " wood!");
 				main.settlement.wood = main.settlement.wood + randomNum;
-				System.out.println("You now have " + main.settlement.wood + " wood");
+				Default.main.JFrame.outputTextArea.append("\nYou now have " + main.settlement.wood + " wood");
 				break;
 			// Metal
 			case 3:
 				randomNum = rand.nextInt(Default.main.partySize * 2);
-				System.out.println("You have mined " + randomNum + " metal!");
+				Default.main.JFrame.outputTextArea.append("\nYou have mined " + randomNum + " metal!");
 				main.settlement.metal = main.settlement.metal + randomNum;
-				System.out.println("You now have " + main.settlement.metal + " metal");
+				Default.main.JFrame.outputTextArea.append("\nYou now have " + main.settlement.metal + " metal");
 				break;
 			default:
 				break;

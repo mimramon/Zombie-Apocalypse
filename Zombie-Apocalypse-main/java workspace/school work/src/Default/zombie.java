@@ -5,6 +5,8 @@ import java.util.*;
 
 public class zombie 
 {
+	public static JFrame JFrame = new JFrame();
+	
 	// VARIABLES - Methods
 	public Random rand = new Random();
 
@@ -37,7 +39,7 @@ public class zombie
                 break;
             // Error
     		default:
-    			System.out.println("There was an error setting the stats for that zombie");
+    			Default.main.JFrame.outputTextArea.append("\nThere was an error setting the stats for that zombie");
     			break;
     	}
     }

@@ -107,7 +107,7 @@ public class main // Game manager class
 							JFrame.outputTextArea.append("\nThere was an error collecting the resources");
 							break;
 					}
-					JFrame.outputTextArea.append("\nPress enter to continue to task selection");
+					JFrame.outputTextArea.append("\n\nPress enter to continue to task selection");
 					proceed = scan.nextLine();
 					break;
 
@@ -120,19 +120,19 @@ public class main // Game manager class
 				case 3: 
 					// Randomly generates an amount of food for the survivors to find
 					int newfood = rand.nextInt(partySize * 2);
-					JFrame.outputTextArea.append("\nYou have found " + newfood + " food.");
+					JFrame.outputTextArea.append("\n\nYou have found " + newfood + " food.");
 					
 					// Updates the total amount of food available
 					settlement.food = settlement.food + newfood;
-					JFrame.outputTextArea.append("\nYou now have " + settlement.food + " food.");
-					JFrame.outputTextArea.append("\nPress enter to continue to task selection");
+					JFrame.outputTextArea.append("\n\nYou now have " + settlement.food + " food.");
+					JFrame.outputTextArea.append("\n\nPress enter to continue to task selection");
 					proceed = scan.nextLine();
 					break;
 
 				// Nothing happens
         		case 4:
-					JFrame.outputTextArea.append("\nNothing has has happened this round");
-					JFrame.outputTextArea.append("\nPress enter to continue to task selection");
+					JFrame.outputTextArea.append("\n\nNothing has has happened this round");
+					JFrame.outputTextArea.append("\n\nPress enter to continue to task selection");
 					proceed = scan.nextLine();
 					break;
 
@@ -143,7 +143,7 @@ public class main // Game manager class
 					
 				// Error
         		default:
-        			JFrame.outputTextArea.append("\nThere was an error starting the round");
+        			JFrame.outputTextArea.append("\n\nThere was an error starting the round");
         			break;
         	}
         	
@@ -188,24 +188,24 @@ public class main // Game manager class
 					PARTY[partySize-1] = new medic();
 					break;
 				default:
-					JFrame.outputTextArea.append("\nThere was an error adding a new survivor");
+					JFrame.outputTextArea.append("\n\nThere was an error adding a new survivor");
 					break;
 			}
-			JFrame.outputTextArea.append("\nYou found a " + PARTY[partySize-1].role + ". They have joined your party!");
+			JFrame.outputTextArea.append("\n\nYou found a " + PARTY[partySize-1].role + ". They have joined your party!");
 		}
 		else
 		{
-			JFrame.outputTextArea.append("\nA survivor tried to join your party but you had no space. RIP");
+			JFrame.outputTextArea.append("\n\nA survivor tried to join your party but you had no space. RIP");
 		}
 
-		JFrame.outputTextArea.append("\nPress enter to continue to task selection");
+		JFrame.outputTextArea.append("\n\nPress enter to continue to task selection");
 		proceed = scan.nextLine();
 	}
 
 	public static void zombieEvent()
 	{
 		hordeSize = rand.nextInt(partySize*2);
-		JFrame.outputTextArea.append("\nYou have encountered:");
+		JFrame.outputTextArea.append("\n\nYou have encountered:");
 		for(int i = 0; i < hordeSize; i++)
 		{
 			HORDE[i] = new zombie();
@@ -214,7 +214,7 @@ public class main // Game manager class
 			JFrame.outputTextArea.append("\n-" + HORDE[i].role);
 		}
 	
-		JFrame.outputTextArea.append("\nThe horde consists of " + hordeSize + " zombies");
+		JFrame.outputTextArea.append("\n\nThe horde consists of " + hordeSize + " zombies");
 		
 		int partyPower = 0;
 		for(int i = 0; i < partySize - 1; i++)

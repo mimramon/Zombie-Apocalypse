@@ -15,8 +15,8 @@ public class hunter extends survivor
     // HUNTER IDLE TASKS
 	public void idle(int partyPosition)
 	{
-		System.out.println("\nWhat would you like your hunter to do.");
-    	System.out.println("1) Scavenge\n2) Find timber\n3) Mining");
+		Default.main.JFrame.outputTextArea.append("\n\nWhat would you like your hunter to do.");
+    	Default.main.JFrame.outputTextArea.append("\n1) Scavenge\n2) Find timber\n3) Mining");
 		defaultTasks(partyPosition);
 	}
 }
