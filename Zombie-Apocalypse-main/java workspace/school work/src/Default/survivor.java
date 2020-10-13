@@ -23,7 +23,7 @@ public class survivor
 	
 	// VARIABLES - Misc
 	public String role;
-	public static int userInput;
+	public static String userInput;
 	public static int randomNum;
 	
 	public void idle(int partyPosition)
@@ -33,8 +33,13 @@ public class survivor
 
 	public void defaultTasks(int partyPosition) 
 	{
-		userInput = scan.nextInt();
-		switch (userInput) 
+		userInput = scan.nextLine();
+		while(!(userInput.equals("1") || userInput.equals("2") || userInput.equals("3") ))
+		{
+			System.out.println("Please enter a valid answer");
+			userInput = scan.nextLine();
+		}
+		switch (Integer.parseInt(userInput)) 
 		{
 			// Scavenging
 			case 1:
@@ -68,6 +73,7 @@ public class survivor
 				main.settlement.metal = main.settlement.metal + randomNum;
 				System.out.println("You now have " + main.settlement.metal + " metal");
 				break;
+				
 			default:
 				break;
 		}
