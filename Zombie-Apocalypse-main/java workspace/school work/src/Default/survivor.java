@@ -23,7 +23,7 @@ public class survivor
 	
 	// VARIABLES - Misc
 	public String role;
-	public static int userInput;
+	public static String userInput;
 	public static int randomNum;
 	
 	public void idle(int partyPosition)
@@ -33,6 +33,7 @@ public class survivor
 
 	public void defaultTasks(int partyPosition) 
 	{
+<<<<<<< HEAD
 		userInput = scan.nextInt();
 		while(!((userInput == 1) || (userInput == 2) || (userInput == 3)))
 		{
@@ -40,6 +41,15 @@ public class survivor
 			userInput = scan.nextInt();
 		}
 		switch (userInput) 
+=======
+		userInput = scan.nextLine();
+		while(!(userInput.equals("1") || userInput.equals("2") || userInput.equals("3") ))
+		{
+			System.out.println("Please enter a valid answer");
+			userInput = scan.nextLine();
+		}
+		switch (Integer.parseInt(userInput)) 
+>>>>>>> mimramon-patch-11
 		{
 			// Scavenging
 			case 1:

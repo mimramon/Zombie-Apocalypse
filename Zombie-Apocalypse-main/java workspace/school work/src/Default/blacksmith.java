@@ -18,6 +18,7 @@ public class blacksmith extends survivor
 		if(main.settlement.metal >0 && main.settlement.workshop)
     	{
 			System.out.println("4) Make ammo");
+<<<<<<< HEAD
     		userInput = scan.nextInt();
     		while(!((userInput == 1) || (userInput == 2) || (userInput == 3) || (userInput == 4)))
     		{
@@ -25,6 +26,15 @@ public class blacksmith extends survivor
     			userInput = scan.nextInt();
     		}
     		switch (userInput) 
+=======
+    		userInput = scan.nextLine();
+    		while(!(userInput.equals("1") || userInput.equals("2") || userInput.equals("3") || userInput.equals("4")))
+    		{
+    			System.out.println("Please enter a valid answer");
+    			userInput = scan.nextLine();
+    		}
+    		switch (Integer.parseInt(userInput)) 
+>>>>>>> mimramon-patch-11
     		{
     			case 1:
     				break;
@@ -40,11 +50,11 @@ public class blacksmith extends survivor
 					break;
 				case 4:
 					System.out.println("How much ammo would you like to make?\nWith your current resources, you can make " + main.settlement.metal + " ammo.");
-					userInput = scan.nextInt();
-					if(main.settlement.metal/userInput >= 1)
+					userInput = scan.nextLine();
+					if(main.settlement.metal/Integer.parseInt(userInput) >= 1)
 					{
-						main.settlement.metal = main.settlement.metal - userInput;
-						main.settlement.ammo = main.settlement.ammo + userInput;
+						main.settlement.metal = main.settlement.metal - Integer.parseInt(userInput);
+						main.settlement.ammo = main.settlement.ammo + Integer.parseInt(userInput);
 						System.out.println("You have made " + userInput + " ammo, you now have " + main.settlement.ammo + " ammo.");
 					}
 					else

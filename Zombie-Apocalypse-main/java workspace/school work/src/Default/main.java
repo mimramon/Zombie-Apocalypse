@@ -210,15 +210,19 @@ public class main // Game manager class
 		System.out.println("The horde consists of " + hordeSize + " zombies");
 		
 		int partyPower = 0;
-		for(int i = 0; i < partySize - 1; i++)
+		for(int i = 0; i < partySize; i++)
 		{
 			partyPower += PARTY[i].combatStrength;
 		}
 	
 		int hordePower = 0;
-		for(int i = 0; i < partySize - 1; i++)
+		for(int i = 0; i < hordeSize; i++)
 		{
+<<<<<<< HEAD
 			hordePower += HORDE[i].combatStrength;
+=======
+			hordePower = hordePower + HORDE[i].combatStrength;
+>>>>>>> mimramon-patch-11
 		}
 	
 		System.out.println("\nYour total combat power is: " + partyPower + "\nThe total combat power of the horde is: " + hordePower);
