@@ -22,15 +22,6 @@ public class builder extends survivor
     			{
 					System.out.println("5) Build a workshop");
 					//#region Builder Tasks (Up to task 5)
-<<<<<<< HEAD
-    				userInput = scan.nextInt();
-    				while(!((userInput == 1) || (userInput == 2) || (userInput == 3) || (userInput == 4) || (userInput == 5)))
-    	    		{
-    	    			System.out.println("Please enter a valid answer");
-    	    			userInput = scan.nextInt();
-    	    		}
-    				switch (userInput) 
-=======
     				userInput = scan.nextLine();
     				while(!(userInput.equals("1") || userInput.equals("2") || userInput.equals("3") || userInput.equals("4") || userInput.equals("5")))
     	    		{
@@ -38,7 +29,6 @@ public class builder extends survivor
     	    			userInput = scan.nextLine();
     	    		}
     				switch (Integer.parseInt(userInput)) 
->>>>>>> mimramon-patch-11
     				{
     					case 1:
 
@@ -71,15 +61,6 @@ public class builder extends survivor
 				else
 				{
 					//#region Builder Tasks (Up to option 4)
-<<<<<<< HEAD
-					userInput = scan.nextInt();
-					while(!((userInput == 1) || (userInput == 2) || (userInput == 3) || (userInput == 4)))
-		    		{
-		    			System.out.println("Please enter a valid answer");
-		    			userInput = scan.nextInt();
-		    		}
-    				switch (userInput) 
-=======
 					userInput = scan.nextLine();
 					while(!(userInput.equals("1") || userInput.equals("2") || userInput.equals("3") || userInput.equals("4")))
 		    		{
@@ -87,7 +68,6 @@ public class builder extends survivor
 		    			userInput = scan.nextLine();
 		    		}
     				switch (Integer.parseInt(userInput)) 
->>>>>>> mimramon-patch-11
     				{
     					case 1:
 						

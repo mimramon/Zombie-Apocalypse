@@ -18,15 +18,6 @@ public class blacksmith extends survivor
 		if(main.settlement.metal >0 && main.settlement.workshop)
     	{
 			System.out.println("4) Make ammo");
-<<<<<<< HEAD
-    		userInput = scan.nextInt();
-    		while(!((userInput == 1) || (userInput == 2) || (userInput == 3) || (userInput == 4)))
-    		{
-    			System.out.println("Please enter a valid answer");
-    			userInput = scan.nextInt();
-    		}
-    		switch (userInput) 
-=======
     		userInput = scan.nextLine();
     		while(!(userInput.equals("1") || userInput.equals("2") || userInput.equals("3") || userInput.equals("4")))
     		{
@@ -34,7 +25,6 @@ public class blacksmith extends survivor
     			userInput = scan.nextLine();
     		}
     		switch (Integer.parseInt(userInput)) 
->>>>>>> mimramon-patch-11
     		{
     			case 1:
     				break;

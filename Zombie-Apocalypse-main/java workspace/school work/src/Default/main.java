@@ -218,11 +218,7 @@ public class main // Game manager class
 		int hordePower = 0;
 		for(int i = 0; i < hordeSize; i++)
 		{
-<<<<<<< HEAD
-			hordePower += HORDE[i].combatStrength;
-=======
 			hordePower = hordePower + HORDE[i].combatStrength;
->>>>>>> mimramon-patch-11
 		}
 	
 		System.out.println("\nYour total combat power is: " + partyPower + "\nThe total combat power of the horde is: " + hordePower);
