@@ -34,6 +34,11 @@ public class survivor
 	public void defaultTasks(int partyPosition) 
 	{
 		userInput = scan.nextInt();
+		while(!((userInput == 1) || (userInput == 2) || (userInput == 3)))
+		{
+			System.out.println("Please enter a valid answer");
+			userInput = scan.nextInt();
+		}
 		switch (userInput) 
 		{
 			// Scavenging
@@ -68,6 +73,7 @@ public class survivor
 				main.settlement.metal = main.settlement.metal + randomNum;
 				System.out.println("You now have " + main.settlement.metal + " metal");
 				break;
+				
 			default:
 				break;
 		}

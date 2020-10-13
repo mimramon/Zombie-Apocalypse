@@ -218,7 +218,7 @@ public class main // Game manager class
 		int hordePower = 0;
 		for(int i = 0; i < partySize - 1; i++)
 		{
-			hordePower += PARTY[i].combatStrength;
+			hordePower += HORDE[i].combatStrength;
 		}
 	
 		System.out.println("\nYour total combat power is: " + partyPower + "\nThe total combat power of the horde is: " + hordePower);
@@ -227,6 +227,7 @@ public class main // Game manager class
 		while(!(userInput.equalsIgnoreCase("Yes") || userInput.equalsIgnoreCase("No")))
 		{
 			System.out.println("Please enter a valid answer");
+			userInput = scan.nextLine();
 		}
 
 		if(userInput.equalsIgnoreCase("Yes"))
@@ -237,6 +238,7 @@ public class main // Game manager class
 			while(!(Integer.parseInt(userInput) <= settlement.ammo))
 			{
 				System.out.println("Please enter a valid value");
+				userInput = scan.nextLine();
 			}
 			partyPower += Integer.parseInt(userInput);
 			System.out.println("Your total combat power is now " + partyPower);
@@ -256,6 +258,7 @@ public class main // Game manager class
 				userInput = scan.nextLine();
 				while(!(userInput.equalsIgnoreCase("yes") || userInput.equalsIgnoreCase("no")))
 				{
+					System.out.println("Please enter a valid answer");
 					userInput = scan.nextLine();
 				}
 
@@ -294,6 +297,10 @@ public class main // Game manager class
 					System.out.println("Would you like to use 1 med to save this survivor? ( Yes/No )");
 					userInput = scan.nextLine();
 					while(!(userInput.equalsIgnoreCase("yes") || userInput.equalsIgnoreCase("no")))
+					{
+						System.out.println("Please enter a valid answer");
+						userInput = scan.nextLine();
+					}
 					if(userInput.equalsIgnoreCase("Yes"))
 					{
 						settlement.meds--;
