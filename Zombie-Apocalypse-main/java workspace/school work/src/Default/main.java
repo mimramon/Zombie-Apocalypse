@@ -30,6 +30,7 @@ public class main // Game manager class
 	
 	public static void startGame()
 	{
+		gui.main();
 		// Creates starting party
 		partySize = 4;
 		
