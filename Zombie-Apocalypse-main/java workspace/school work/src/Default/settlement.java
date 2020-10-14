@@ -1,5 +1,3 @@
-package Default;
-
 public class settlement 
 {
 	// VARIABLES - Buildings

@@ -1,5 +1,3 @@
-package Default;
-
 // Imports
 import java.util.*;
 
@@ -11,6 +9,7 @@ public class main // Game manager class
 	public static survivor[] PARTY = new survivor[20];
 	public static zombie[] HORDE = new zombie[40]; 
 	public static settlement settlement = new settlement();
+	public static window gui = new window();
 	public static int partySize;
 	public static int hordeSize;
     public static int round = 1;
@@ -20,6 +19,9 @@ public class main // Game manager class
     
     public static void main(String[] args) // Start function
     {
+		// Open the window
+		gui.createWindow();
+
         System.out.println("Welcome to Zombie Apocalypse.\nPress enter to continue.");
         proceed = scan.nextLine();
 		
@@ -142,6 +144,7 @@ public class main // Game manager class
         	
         	idleTasks();
 			round++;
+			gui.nextRound();
 			if (partySize < 1)
 			{
 				isDead = true;

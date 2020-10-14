@@ -1,5 +1,3 @@
-package Default;
-
 // Imports
 import java.util.*;
 
@@ -46,7 +44,7 @@ public class survivor
 				if(main.PARTY[partyPosition].role.equals("Hunter"))
 				{
 					int max = main.PARTY[partyPosition].scavenging * 3;
-					int min = Default.main.partySize;
+					int min = main.partySize;
 					randomNum = rand.nextInt(max + 1 - min) + min;
 				}
 				else
@@ -61,14 +59,14 @@ public class survivor
 				break;
 			// Wood
 			case 2:
-				randomNum = rand.nextInt(Default.main.partySize * 2);
+				randomNum = rand.nextInt(main.partySize * 2);
 				System.out.println("You have found " + randomNum + " wood!");
 				main.settlement.wood = main.settlement.wood + randomNum;
 				System.out.println("You now have " + main.settlement.wood + " wood");
 				break;
 			// Metal
 			case 3:
-				randomNum = rand.nextInt(Default.main.partySize * 2);
+				randomNum = rand.nextInt(main.partySize * 2);
 				System.out.println("You have mined " + randomNum + " metal!");
 				main.settlement.metal = main.settlement.metal + randomNum;
 				System.out.println("You now have " + main.settlement.metal + " metal");

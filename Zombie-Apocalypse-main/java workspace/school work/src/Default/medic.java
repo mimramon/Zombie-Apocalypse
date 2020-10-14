@@ -1,5 +1,3 @@
-package Default;
-
 public class medic extends survivor
 {
     public medic()
@@ -30,11 +28,11 @@ public class medic extends survivor
     			case 1:
     				break;
     			case 2:
-					main.settlement.wood = main.settlement.wood + rand.nextInt(Default.main.partySize * 2);
+					main.settlement.wood = main.settlement.wood + rand.nextInt(main.partySize * 2);
 					System.out.println("You now have " + main.settlement.wood + " wood");
     				break;
 				case 3:
-					randomNum = rand.nextInt(Default.main.partySize * 2);
+					randomNum = rand.nextInt(main.partySize * 2);
 					System.out.println("You have mined " + randomNum + " metal!");
 					main.settlement.metal = main.settlement.metal + randomNum;
 					System.out.println("You now have " + main.settlement.metal + " metal");
