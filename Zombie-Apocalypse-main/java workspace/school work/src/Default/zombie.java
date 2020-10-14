@@ -1,5 +1,3 @@
-package Default;
-
 // Imports
 import java.util.*;
 

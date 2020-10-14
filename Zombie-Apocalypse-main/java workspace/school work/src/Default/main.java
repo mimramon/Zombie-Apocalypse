@@ -1,5 +1,3 @@
-package Default;
-
 // Imports
 import java.util.*;
 
@@ -11,6 +9,7 @@ public class main // Game manager class
 	public static survivor[] PARTY = new survivor[20];
 	public static zombie[] HORDE = new zombie[40]; 
 	public static settlement settlement = new settlement();
+	public static window gui = new window();
 	public static int partySize;
 	public static int hordeSize;
     public static int round = 1;
@@ -30,7 +29,7 @@ public class main // Game manager class
 	
 	public static void startGame()
 	{
-		gui.main();
+		gui.main(null);
 		// Creates starting party
 		partySize = 4;
 		

@@ -1,5 +1,3 @@
-package Default;
-
 public class hunter extends survivor
 {
     public hunter()
