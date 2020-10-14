@@ -43,7 +43,7 @@ public class survivor
 				if(main.PARTY[partyPosition].role.equals("Hunter"))
 				{
 					int max = main.PARTY[partyPosition].scavenging * 3;
-					int min = Default.main.partySize;
+					int min = main.partySize;
 					randomNum = rand.nextInt(max + 1 - min) + min;
 				}
 				else
@@ -52,23 +52,23 @@ public class survivor
 					int min = 0;
 					randomNum = rand.nextInt(max + 1 - min) + min;
 				}
-				Default.main.JFrame.outputTextArea.append("\nYou have found " + randomNum + " food!");
+				main.JFrame.outputTextArea.append("\nYou have found " + randomNum + " food!");
 				main.settlement.food = main.settlement.food + randomNum;
-				Default.main.JFrame.outputTextArea.append("\nYou now have " + main.settlement.food + " food");
+				main.JFrame.outputTextArea.append("\nYou now have " + main.settlement.food + " food");
 				break;
 			// Wood
 			case 2:
-				randomNum = rand.nextInt(Default.main.partySize * 2);
-				Default.main.JFrame.outputTextArea.append("\nYou have found " + randomNum + " wood!");
+				randomNum = rand.nextInt(main.partySize * 2);
+				main.JFrame.outputTextArea.append("\nYou have found " + randomNum + " wood!");
 				main.settlement.wood = main.settlement.wood + randomNum;
-				Default.main.JFrame.outputTextArea.append("\nYou now have " + main.settlement.wood + " wood");
+				main.JFrame.outputTextArea.append("\nYou now have " + main.settlement.wood + " wood");
 				break;
 			// Metal
 			case 3:
-				randomNum = rand.nextInt(Default.main.partySize * 2);
-				Default.main.JFrame.outputTextArea.append("\nYou have mined " + randomNum + " metal!");
+				randomNum = rand.nextInt(main.partySize * 2);
+				main.JFrame.outputTextArea.append("\nYou have mined " + randomNum + " metal!");
 				main.settlement.metal = main.settlement.metal + randomNum;
-				Default.main.JFrame.outputTextArea.append("\nYou now have " + main.settlement.metal + " metal");
+				main.JFrame.outputTextArea.append("\nYou now have " + main.settlement.metal + " metal");
 				break;
 			default:
 				break;

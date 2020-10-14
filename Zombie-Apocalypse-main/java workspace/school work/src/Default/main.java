@@ -46,7 +46,6 @@ public class main // Game manager class
 		
         //Creates starting settlement
 		settlement.setSettlement();
-		JFrame.setVisible(true);
 		JFrame.outputTextArea.append("\nYou are starting the game with:");
 		JFrame.outputTextArea.append("\n- " + settlement.houses + " house");
 		JFrame.outputTextArea.append("\n- " + settlement.wood + " wood");

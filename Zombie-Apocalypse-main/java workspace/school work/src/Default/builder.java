@@ -15,14 +15,14 @@ public class builder extends survivor
     // BUILDER IDLE TASKS
 	public void idle(int partyPosition)
 	{
-		Default.main.JFrame.outputTextArea.append("\n\nWhat would you like your builder to do.");
-    	Default.main.JFrame.outputTextArea.append("\n1) Scavenge\n2) Find timber\n3) Mining");
+		main.JFrame.outputTextArea.append("\n\nWhat would you like your builder to do.");
+    	main.JFrame.outputTextArea.append("\n1) Scavenge\n2) Find timber\n3) Mining");
 		if(main.settlement.wood >=10)
 		{
-			Default.main.JFrame.outputTextArea.append("\n4) Build a house");
+			main.JFrame.outputTextArea.append("\n4) Build a house");
     			if(main.settlement.wood >= 20 && !main.settlement.workshop)
     			{
-					Default.main.JFrame.outputTextArea.append("\n5) Build a workshop");
+					main.JFrame.outputTextArea.append("\n5) Build a workshop");
 					//#region Builder Tasks (Up to task 5)
     				userInput = scan.nextInt();
     				switch (userInput) 
@@ -31,24 +31,24 @@ public class builder extends survivor
 
     						break;
     					case 2:
-							main.settlement.wood = main.settlement.wood + rand.nextInt(Default.main.partySize * 2);
-							Default.main.JFrame.outputTextArea.append("\nYou now have " + main.settlement.wood + " wood");
+							main.settlement.wood = main.settlement.wood + rand.nextInt(main.partySize * 2);
+							main.JFrame.outputTextArea.append("\nYou now have " + main.settlement.wood + " wood");
     						break;
     					case 3:
-							randomNum = rand.nextInt(Default.main.partySize * 2);
-							Default.main.JFrame.outputTextArea.append("\nYou have mined " + randomNum + " metal!");
+							randomNum = rand.nextInt(main.partySize * 2);
+							main.JFrame.outputTextArea.append("\nYou have mined " + randomNum + " metal!");
 							main.settlement.metal = main.settlement.metal + randomNum;
-							Default.main.JFrame.outputTextArea.append("\nYou now have " + main.settlement.metal + " metal");
+							main.JFrame.outputTextArea.append("\nYou now have " + main.settlement.metal + " metal");
     						break;
     					case 4:
 							main.settlement.houses = main.settlement.houses + 1;
 							main.settlement.wood = main.settlement.wood - 10;
-							Default.main.JFrame.outputTextArea.append("\nYou have built another house. You now have " + main.settlement.houses + " houses.");
+							main.JFrame.outputTextArea.append("\nYou have built another house. You now have " + main.settlement.houses + " houses.");
     						break;
     					case 5:
 							main.settlement.workshop = true;
 							main.settlement.wood = main.settlement.wood - 20;
-							Default.main.JFrame.outputTextArea.append("\nYou have built the workshop!");
+							main.JFrame.outputTextArea.append("\nYou have built the workshop!");
     						break;
     					default:
     						break;
@@ -65,19 +65,19 @@ public class builder extends survivor
 						
     						break;
     					case 2:
-							main.settlement.wood = main.settlement.wood + rand.nextInt(Default.main.partySize * 2);
-							Default.main.JFrame.outputTextArea.append("\nYou now have " + main.settlement.wood + " wood");
+							main.settlement.wood = main.settlement.wood + rand.nextInt(main.partySize * 2);
+							main.JFrame.outputTextArea.append("\nYou now have " + main.settlement.wood + " wood");
     						break;
     					case 3:
-							randomNum = rand.nextInt(Default.main.partySize * 2);
-							Default.main.JFrame.outputTextArea.append("\nYou have mined " + randomNum + " metal!");
+							randomNum = rand.nextInt(main.partySize * 2);
+							main.JFrame.outputTextArea.append("\nYou have mined " + randomNum + " metal!");
 							main.settlement.metal = main.settlement.metal + randomNum;
-							Default.main.JFrame.outputTextArea.append("\nYou now have " + main.settlement.metal + " metal");
+							main.JFrame.outputTextArea.append("\nYou now have " + main.settlement.metal + " metal");
     						break;
     					case 4:
 							main.settlement.houses = main.settlement.houses + 1;
 							main.settlement.wood = main.settlement.wood - 10;
-							Default.main.JFrame.outputTextArea.append("\nYou have built another house. You now have " + main.settlement.houses + " houses.");
+							main.JFrame.outputTextArea.append("\nYou have built another house. You now have " + main.settlement.houses + " houses.");
     						break;
     					default:
     						break;

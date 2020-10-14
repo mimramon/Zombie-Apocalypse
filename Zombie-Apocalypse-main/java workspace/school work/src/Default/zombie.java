@@ -29,7 +29,6 @@ public class zombie
     		case "Charger":
     			combatStrength = 2;
                 break;
-            // Volatile zombie (High damage)
     		case "Volatile Charger":
     			combatStrength = 4;
                 break;
@@ -39,7 +38,7 @@ public class zombie
                 break;
             // Error
     		default:
-    			Default.main.JFrame.outputTextArea.append("\nThere was an error setting the stats for that zombie");
+    			main.JFrame.outputTextArea.append("\nThere was an error setting the stats for that zombie");
     			break;
     	}
     }
