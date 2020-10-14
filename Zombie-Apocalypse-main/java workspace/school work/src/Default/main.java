@@ -19,6 +19,9 @@ public class main // Game manager class
     
     public static void main(String[] args) // Start function
     {
+		// Open the window
+		gui.createWindow();
+
         System.out.println("Welcome to Zombie Apocalypse.\nPress enter to continue.");
         proceed = scan.nextLine();
 		
@@ -29,7 +32,6 @@ public class main // Game manager class
 	
 	public static void startGame()
 	{
-		gui.main(null);
 		// Creates starting party
 		partySize = 4;
 		
@@ -142,6 +144,7 @@ public class main // Game manager class
         	
         	idleTasks();
 			round++;
+			gui.nextRound();
 			if (partySize < 1)
 			{
 				isDead = true;
