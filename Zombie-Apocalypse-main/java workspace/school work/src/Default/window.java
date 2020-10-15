@@ -1,5 +1,5 @@
 // IMPORTS
-import javax.swing.*;
+import javax.swing.*; // Import the swing library
 
 public class window
 {   
@@ -9,6 +9,7 @@ public class window
     public static JButton saveButton = new JButton("Save Game"); // Make the saveButton
     public static JButton proceedButton = new JButton("Next"); // Make the proceedButton
     public static JTextArea outputArea = new JTextArea(); // Make the text area for the game output
+    public static JScrollPane scroll = new JScrollPane(outputArea); // Make the scroll pane and place the output area inside of it
     public static JTextField inputField = new JTextField(); // Make the text field for the user input
     public static JProgressBar progressBar = new JProgressBar(); // Makes the progress bar 
 
@@ -16,8 +17,8 @@ public class window
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // Make the window exit when X button pressed
 
         
-        title.setBounds(0, 15, 1280, 20);
-        frame.getContentPane().add(title);
+        title.setBounds(0, 15, 1280, 20); // IN ORDER: X Value (From Top Left), Y Value (From Top Left), Width, Height (ALL IN PIXELS)
+        frame.getContentPane().add(title); // Add the title to the JPanel
 
         
         loadButton.setBounds(20, 50, 100, 40); // IN ORDER: X Value (From Top Left), Y Value (From Top Left), Width, Height (ALL IN PIXELS)
@@ -29,15 +30,17 @@ public class window
 
         
         outputArea.setBounds(140, 50, 1090, 550); // IN ORDER: X Value (From Top Left), Y Value (From Top Left), Width, Height (ALL IN PIXELS)
-        frame.getContentPane().add(outputArea); // Add outputArea to the JFrame
+        scroll.setBounds(140, 50, 1090, 550); // Set bounds of the scroll panel        
+        outputArea.setEditable(false); // Stops users from editing the output area
+        outputArea.setLineWrap(true); // Start a new line when there isn't enough space ( Basically removes the need for a horisontal scrollbar)
+        frame.getContentPane().add(scroll); // Add outputArea to the JFrame inside of scroll
 
-
-        inputField.setBounds(140, 610, 950, 25);
-        frame.getContentPane().add(inputField);
+        inputField.setBounds(140, 610, 950, 25); // IN ORDER: X Value (From Top Left), Y Value (From Top Left), Width, Height (ALL IN PIXELS)
+        frame.getContentPane().add(inputField); // Add the input field to the JFrame
         
 
-        proceedButton.setBounds(1155, 610, 75, 25);
-        frame.getContentPane().add(proceedButton);
+        proceedButton.setBounds(1155, 610, 75, 25); // IN ORDER: X Value (From Top Left), Y Value (From Top Left), Width, Height (ALL IN PIXELS)
+        frame.getContentPane().add(proceedButton); // Add the proceed button to the JFrame
 
 
         progressBar.setBounds(20, 650, 1220, 20); // IN ORDER: X Value (From Top Left), Y Value (From Top Left), Width, Height (ALL IN PIXELS)
@@ -55,6 +58,6 @@ public class window
     public static void nextRound()
     {
         progressBar.setValue(main.round); // Set the value of the progress bar
-        progressBar.setString(main.round + "%");
+        progressBar.setString(main.round + "%"); // Sets the text of the progress bar
     }
 }
