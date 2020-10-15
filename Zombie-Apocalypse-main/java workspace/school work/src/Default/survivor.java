@@ -34,7 +34,7 @@ public class survivor
 		userInput = scan.nextLine();
 		while(!(userInput.equals("1") || userInput.equals("2") || userInput.equals("3") ))
 		{
-			System.out.println("Please enter a valid answer");
+			main.windowOutput("Please enter a valid answer");
 			userInput = scan.nextLine();
 		}
 		switch (Integer.parseInt(userInput)) 
@@ -53,23 +53,23 @@ public class survivor
 					int min = 0;
 					randomNum = rand.nextInt(max + 1 - min) + min;
 				}
-				System.out.println("You have found " + randomNum + " food!");
+				main.windowOutput("You have found " + randomNum + " food!");
 				main.settlement.food = main.settlement.food + randomNum;
-				System.out.println("You now have " + main.settlement.food + " food");
+				main.windowOutput("You now have " + main.settlement.food + " food");
 				break;
 			// Wood
 			case 2:
 				randomNum = rand.nextInt(main.partySize * 2);
-				System.out.println("You have found " + randomNum + " wood!");
+				main.windowOutput("You have found " + randomNum + " wood!");
 				main.settlement.wood = main.settlement.wood + randomNum;
-				System.out.println("You now have " + main.settlement.wood + " wood");
+				main.windowOutput("You now have " + main.settlement.wood + " wood");
 				break;
 			// Metal
 			case 3:
 				randomNum = rand.nextInt(main.partySize * 2);
-				System.out.println("You have mined " + randomNum + " metal!");
+				main.windowOutput("You have mined " + randomNum + " metal!");
 				main.settlement.metal = main.settlement.metal + randomNum;
-				System.out.println("You now have " + main.settlement.metal + " metal");
+				main.windowOutput("You now have " + main.settlement.metal + " metal");
 				break;
 				
 			default:
