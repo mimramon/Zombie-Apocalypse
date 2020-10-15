@@ -331,7 +331,8 @@ public class main // Game manager class
 	
 	public static void windowOutput(String output)
 	{
-		window.outputArea.append(output);
-		window.outputArea.append("\n");
+		window.outputArea.append(output); // Append the text to the output area
+		window.outputArea.append("\n"); // ^^^
+		window.outputArea.setCaretPosition(window.outputArea.getDocument().getLength()); // Set the scroll bar to the bottom in the JFrame
 	}
 }
