@@ -55,6 +55,7 @@ public class main // Game manager class
 	{
 		while(round <= 100 && !isDead)
         {
+			gui.nextRound();
         	System.out.println("\nYou are now starting round "+round);
 			
 			// In-game event handler
@@ -144,7 +145,6 @@ public class main // Game manager class
         	
         	idleTasks();
 			round++;
-			gui.nextRound();
 			if (partySize < 1)
 			{
 				isDead = true;
