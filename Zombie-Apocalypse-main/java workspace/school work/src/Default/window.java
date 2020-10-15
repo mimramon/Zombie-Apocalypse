@@ -50,6 +50,7 @@ public class window
         frame.setSize(1280, 720); // Set the size of the window when opened
         frame.setLayout(null); // Set the window layout
         frame.setVisible(true); // Show the window
+        frame.setResizable(false); // Disable resizing of the window
     }
     public static void nextRound()
     {
