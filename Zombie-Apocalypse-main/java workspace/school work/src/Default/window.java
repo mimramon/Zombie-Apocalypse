@@ -15,6 +15,14 @@ public class window
 
     public static void createWindow() {
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // Make the window exit when X button pressed
+        try 
+        {
+            UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+        }
+        catch (Exception e)
+        {
+            System.err.println("Look and feel could not be set");
+        }
 
         
         title.setBounds(0, 15, 1280, 20); // IN ORDER: X Value (From Top Left), Y Value (From Top Left), Width, Height (ALL IN PIXELS)
