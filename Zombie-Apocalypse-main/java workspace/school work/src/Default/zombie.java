@@ -35,7 +35,7 @@ public class zombie
                 break;
             // Error
     		default:
-    			System.out.println("There was an error setting the stats for that zombie");
+    			main.windowOutput("There was an error setting the stats for that zombie");
     			break;
     	}
     }

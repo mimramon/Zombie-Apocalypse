@@ -22,7 +22,8 @@ public class main // Game manager class
 		// Open the window
 		gui.createWindow();
 
-        System.out.println("Welcome to Zombie Apocalypse.\nPress enter to continue.");
+		windowOutput("Welcome to Zombie Apocalypse.");
+		windowOutput("Press enter to continue.");
         proceed = scan.nextLine();
 		
 		startGame();
@@ -42,13 +43,13 @@ public class main // Game manager class
 		
         //Creates starting settlement
 		settlement.setSettlement();
-		System.out.println("You are starting the game with:");
-		System.out.println("- " + settlement.houses + " house");
-		System.out.println("- " + settlement.wood + " wood");
-		System.out.println("- " + settlement.metal + " metal");
-		System.out.println("- " + settlement.food + " food");
-		System.out.println("- " + settlement.meds + " meds");
-		System.out.println("- " + settlement.ammo + " ammo");
+	    windowOutput("You are starting the game with:");
+		windowOutput("- " + settlement.houses + " house");
+		windowOutput("- " + settlement.wood + " wood");
+		windowOutput("- " + settlement.metal + " metal");
+		windowOutput("- " + settlement.food + " food");
+		windowOutput("- " + settlement.meds + " meds");
+		windowOutput("- " + settlement.ammo + " ammo");
 	}
 
 	public static void roundManager()
@@ -56,7 +57,7 @@ public class main // Game manager class
 		while(round <= 100 && !isDead)
         {
 			gui.nextRound();
-        	System.out.println("\nYou are now starting round "+round);
+        	windowOutput("\nYou are now starting round "+round);
 			
 			// In-game event handler
 			
@@ -74,36 +75,36 @@ public class main // Game manager class
 					String[] resourceArray = {"wood", "metal", "meds", "ammo"};
 					int newResource = rand.nextInt(resourceArray.length);
 					int newResourceAmount = rand.nextInt(partySize * 5);
-					System.out.println("Congratulations! You have found " + newResourceAmount + " " + resourceArray[newResource]);
+					windowOutput("Congratulations! You have found " + newResourceAmount + " " + resourceArray[newResource]);
 				
 					switch (resourceArray[newResource])
 					{
 						// Case for if the resource is wood
 						case "wood":
 							settlement.wood = settlement.wood + newResourceAmount;
-							System.out.println("You now have " + settlement.wood + " wood");
+							windowOutput("You now have " + settlement.wood + " wood");
 							break;
 						// Case for if the resource is metal
 						case "metal":
 							settlement.meds = settlement.meds + newResourceAmount;
-							System.out.println("You now have " + settlement.meds + " metal");
+							windowOutput("You now have " + settlement.meds + " metal");
 							break;
 						// Case for if the resource is meds
 						case "meds":
 							settlement.meds = settlement.meds + newResourceAmount;
-							System.out.println("You now have " + settlement.meds + " meds");
+							windowOutput("You now have " + settlement.meds + " meds");
 							break;
 						// Case for if the resource is ammo
 						case "ammo":
 							settlement.ammo = settlement.ammo + newResourceAmount;
-							System.out.println("You now have " + settlement.ammo + " ammo");
+							windowOutput("You now have " + settlement.ammo + " ammo");
 							break;
 						// Error
 						default:
-							System.out.println("There was an error collecting the resources");
+							windowOutput("There was an error collecting the resources");
 							break;
 					}
-					System.out.println("Press enter to continue to task selection");
+					windowOutput("Press enter to continue to task selection");
 					proceed = scan.nextLine();
 					break;
 
@@ -116,19 +117,19 @@ public class main // Game manager class
 				case 3: 
 					// Randomly generates an amount of food for the survivors to find
 					int newfood = rand.nextInt(partySize * 2);
-					System.out.println("You have found " + newfood + " food.");
+					windowOutput("You have found " + newfood + " food.");
 					
 					// Updates the total amount of food available
 					settlement.food = settlement.food + newfood;
-					System.out.println("You now have " + settlement.food + " food.");
-					System.out.println("Press enter to continue to task selection");
+					windowOutput("You now have " + settlement.food + " food.");
+					windowOutput("Press enter to continue to task selection");
 					proceed = scan.nextLine();
 					break;
 
 				// Nothing happens
         		case 4:
-					System.out.println("Nothing has has happened this round");
-					System.out.println("Press enter to continue to task selection");
+					windowOutput("Nothing has has happened this round");
+					windowOutput("Press enter to continue to task selection");
 					proceed = scan.nextLine();
 					break;
 
@@ -139,7 +140,7 @@ public class main // Game manager class
 					
 				// Error
         		default:
-        			System.out.println("There was an error starting the round");
+        			windowOutput("There was an error starting the round");
         			break;
         	}
         	
@@ -159,7 +160,7 @@ public class main // Game manager class
     	{
 			PARTY[i].idle(i);	
 		}
-		System.out.println("\n\nPlease press enter to continue to the next round");
+		windowOutput("\n\nPlease press enter to continue to the next round");
 		proceed = scan.nextLine();
 	}
 	
@@ -184,33 +185,33 @@ public class main // Game manager class
 					PARTY[partySize-1] = new medic();
 					break;
 				default:
-					System.out.println("There was an error adding a new survivor");
+					windowOutput("There was an error adding a new survivor");
 					break;
 			}
-			System.out.println("You found a " + PARTY[partySize-1].role + ". They have joined your party!");
+			windowOutput("You found a " + PARTY[partySize-1].role + ". They have joined your party!");
 		}
 		else
 		{
-			System.out.println("A survivor tried to join your party but you had no space. RIP");
+			windowOutput("A survivor tried to join your party but you had no space. RIP");
 		}
 
-		System.out.println("Press enter to continue to task selection");
+		windowOutput("Press enter to continue to task selection");
 		proceed = scan.nextLine();
 	}
 
 	public static void zombieEvent()
 	{
 		hordeSize = rand.nextInt(partySize*2);
-		System.out.println("You have encountered:");
+		windowOutput("You have encountered:");
 		for(int i = 0; i < hordeSize; i++)
 		{
 			HORDE[i] = new zombie();
 			HORDE[i].role = HORDE[i].zombieTypes[rand.nextInt(3)];
 			HORDE[i].setStats();
-			System.out.println("-" + HORDE[i].role);
+			windowOutput("-" + HORDE[i].role);
 		}
 	
-		System.out.println("The horde consists of " + hordeSize + " zombies");
+		windowOutput("The horde consists of " + hordeSize + " zombies");
 		
 		int partyPower = 0;
 		for(int i = 0; i < partySize; i++)
@@ -224,108 +225,113 @@ public class main // Game manager class
 			hordePower = hordePower + HORDE[i].combatStrength;
 		}
 	
-		System.out.println("\nYour total combat power is: " + partyPower + "\nThe total combat power of the horde is: " + hordePower);
-		System.out.println("Would you like to use ammo to increase your total combat power or potentially risk the life of a survivor? ( Yes/No )");
+		windowOutput("\nYour total combat power is: " + partyPower + "\nThe total combat power of the horde is: " + hordePower);
+		windowOutput("Would you like to use ammo to increase your total combat power or potentially risk the life of a survivor? ( Yes/No )");
 		userInput = scan.nextLine();
 		while(!(userInput.equalsIgnoreCase("Yes") || userInput.equalsIgnoreCase("No")))
 		{
-			System.out.println("Please enter a valid answer");
+			windowOutput("Please enter a valid answer");
 			userInput = scan.nextLine();
 		}
 
 		if(userInput.equalsIgnoreCase("Yes"))
 		{
-			System.out.println("How much ammo would you like to use. 1 ammo equates to +1 combat strength");
-			System.out.println("You have " + settlement.ammo + " available to use");
+			windowOutput("How much ammo would you like to use. 1 ammo equates to +1 combat strength");
+			windowOutput("You have " + settlement.ammo + " available to use");
 			userInput = scan.nextLine();
 			while(!(Integer.parseInt(userInput) <= settlement.ammo))
 			{
-				System.out.println("Please enter a valid value");
+				windowOutput("Please enter a valid value");
 				userInput = scan.nextLine();
 			}
 			partyPower += Integer.parseInt(userInput);
-			System.out.println("Your total combat power is now " + partyPower);
+			windowOutput("Your total combat power is now " + partyPower);
 			settlement.ammo -= Integer.parseInt(userInput);
 		}
 
 		if((partyPower - hordePower) >= 1)
 		{
-			System.out.println("You have emerged victorious! Your survivors will live to see another day.");
+			windowOutput("You have emerged victorious! Your survivors will live to see another day.");
 		}
 		else if ((partyPower - hordePower) <= -1)
 		{
-			System.out.println("Your party was outclassed by the zombie horde, your most recent survivor has been fatally wounded");
+			windowOutput("Your party was outclassed by the zombie horde, your most recent survivor has been fatally wounded");
 			if(settlement.meds > 0)
 			{
-				System.out.println("Would you like to use 1 med to save this survivor? ( Yes/No )");
+				windowOutput("Would you like to use 1 med to save this survivor? ( Yes/No )");
 				userInput = scan.nextLine();
 				while(!(userInput.equalsIgnoreCase("yes") || userInput.equalsIgnoreCase("no")))
 				{
-					System.out.println("Please enter a valid answer");
+					windowOutput("Please enter a valid answer");
 					userInput = scan.nextLine();
 				}
 
 				if(userInput.equalsIgnoreCase("Yes"))
 				{
 					settlement.meds--;
-					System.out.println("You saved them");
+					windowOutput("You saved them");
 				}
 				else if(userInput.equalsIgnoreCase("No"))
 				{
-					System.out.println("YOU MONSTER! YOU HAD ENOUGH MEDS TO SAVE THEIR LIFE AND YOU CHOSE NOT TO!!!");
+					windowOutput("YOU MONSTER! YOU HAD ENOUGH MEDS TO SAVE THEIR LIFE AND YOU CHOSE NOT TO!!!");
 					PARTY[partySize-1] = null;
 					partySize--;
 				}
 			}
 			else 
 			{
-				System.out.println("They have perished");
+				windowOutput("They have perished");
 				PARTY[partySize-1] = null;
 				partySize--;
 			}
 		}
 		else 
 		{
-			System.out.println("Your party is evenly matched with the horde. The gods will decide your fate..");
+			windowOutput("Your party is evenly matched with the horde. The gods will decide your fate..");
 			int randomNum = rand.nextInt(2);
 			if(randomNum == 0)
 			{
-				System.out.println("You have emerged victorious! Your survivors will live to see another day.");
+				windowOutput("You have emerged victorious! Your survivors will live to see another day.");
 			}
 			else 
 			{
-				System.out.println("The odds were not in your favour, your most recent survivor has been fatally wounded");
+				windowOutput("The odds were not in your favour, your most recent survivor has been fatally wounded");
 				if(settlement.meds > 0)
 				{
-					System.out.println("Would you like to use 1 med to save this survivor? ( Yes/No )");
+					windowOutput("Would you like to use 1 med to save this survivor? ( Yes/No )");
 					userInput = scan.nextLine();
 					while(!(userInput.equalsIgnoreCase("yes") || userInput.equalsIgnoreCase("no")))
 					{
-						System.out.println("Please enter a valid answer");
+						windowOutput("Please enter a valid answer");
 						userInput = scan.nextLine();
 					}
 					if(userInput.equalsIgnoreCase("Yes"))
 					{
 						settlement.meds--;
-						System.out.println("You saved them");
+						windowOutput("You saved them");
 					}
 					else if(userInput.equalsIgnoreCase("No"))
 					{
-						System.out.println("YOU MONSTER! YOU HAD ENOUGH MEDS TO SAVE THEIR LIFE AND YOU CHOSE NOT TO!!!");
+						windowOutput("YOU MONSTER! YOU HAD ENOUGH MEDS TO SAVE THEIR LIFE AND YOU CHOSE NOT TO!!!");
 						PARTY[partySize-1] = null;
 						partySize--;
 					}
 				}
 				else 
 				{
-					System.out.println("They have perished");
+					windowOutput("They have perished");
 					PARTY[partySize-1] = null;
 					partySize--;
 				}
 			}
 		}
-		System.out.println("Press enter to continue to task selection");
-		proceed = scan.nextLine();
-					
+		windowOutput("Press enter to continue to task selection");
+		proceed = scan.nextLine();				
+	}
+	
+	public static void windowOutput(String output)
+	{
+		window.outputArea.append(output);
+		window.outputArea.append("\n");
 	}
 }
