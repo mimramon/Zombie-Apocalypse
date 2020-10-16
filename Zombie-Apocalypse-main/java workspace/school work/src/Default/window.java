@@ -1,7 +1,8 @@
 // IMPORTS
 import javax.swing.*; // Import the swing library
+import java.awt.event.*;
 
-public class window
+public class window implements ActionListener
 {   
     public static JFrame frame = new JFrame("Game GUI"); // Make the window and the name of the window
     public static JLabel title = new JLabel("Zombie Apocalypse", SwingConstants.CENTER); // Creates the title for the window
@@ -13,7 +14,7 @@ public class window
     public static JTextField inputField = new JTextField(); // Make the text field for the user input
     public static JProgressBar progressBar = new JProgressBar(); // Makes the progress bar 
 
-    public static void createWindow() {
+    public void createWindow() {
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // Make the window exit when X button pressed
         try 
         {
@@ -49,8 +50,8 @@ public class window
 
         proceedButton.setBounds(1155, 610, 75, 25); // IN ORDER: X Value (From Top Left), Y Value (From Top Left), Width, Height (ALL IN PIXELS)
         frame.getContentPane().add(proceedButton); // Add the proceed button to the JFrame
-
-
+        proceedButton.addActionListener(this);
+        
         progressBar.setBounds(20, 650, 1220, 20); // IN ORDER: X Value (From Top Left), Y Value (From Top Left), Width, Height (ALL IN PIXELS)
         progressBar.setMinimum(0);  // Set the minimum value for the progress bar
         progressBar.setMaximum(100); // Set the maximum value for the progress bar
@@ -63,6 +64,14 @@ public class window
         frame.setVisible(true); // Show the window
         frame.setResizable(false); // Disable resizing of the window
     }
+    
+    @Override
+	public void actionPerformed(ActionEvent e)
+	{
+    	main.userInput = inputField.getText();
+		outputArea.append(inputField.getText());
+		inputField.setText("");
+	}
     public static void nextRound()
     {
         progressBar.setValue(main.round); // Set the value of the progress bar
