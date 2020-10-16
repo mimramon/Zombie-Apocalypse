@@ -335,4 +335,9 @@ public class main // Game manager class
 		window.outputArea.append("\n"); // ^^^
 		window.outputArea.setCaretPosition(window.outputArea.getDocument().getLength()); // Set the scroll bar to the bottom in the JFrame
 	}
+	
+	public static void proceed() 
+	{
+		
+	}
 }
