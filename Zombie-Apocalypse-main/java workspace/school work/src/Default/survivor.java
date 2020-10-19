@@ -32,10 +32,12 @@ public class survivor
 	public void defaultTasks(int partyPosition) 
 	{
 		userInput = scan.nextLine();
+		main.windowOutput(userInput);
 		while(!(userInput.equals("1") || userInput.equals("2") || userInput.equals("3") ))
 		{
 			main.windowOutput("Please enter a valid answer");
 			userInput = scan.nextLine();
+			main.windowOutput(userInput);
 		}
 		switch (Integer.parseInt(userInput)) 
 		{
@@ -43,9 +45,18 @@ public class survivor
 			case 1:
 				if(main.PARTY[partyPosition].role.equals("Hunter"))
 				{
-					int max = main.PARTY[partyPosition].scavenging * 3;
-					int min = main.partySize;
-					randomNum = rand.nextInt(max + 1 - min) + min;
+					try
+					{
+						int max = main.PARTY[partyPosition].scavenging * 3;
+						int min = main.partySize;
+						randomNum = rand.nextInt(max + 1 - min) + min;
+					}
+					catch(Exception e)
+					{
+						int max = main.PARTY[partyPosition].scavenging * 3;
+						int min = 0;
+						randomNum = rand.nextInt(max + 1 - min) + min;
+					}
 				}
 				else
 				{

@@ -20,11 +20,13 @@ public class builder extends survivor
     			{
     				main.windowOutput("5) Build a workshop");
 					//#region Builder Tasks (Up to task 5)
-    				userInput = scan.nextLine();
+					userInput = scan.nextLine();
+					main.windowOutput(userInput);
     				while(!(userInput.equals("1") || userInput.equals("2") || userInput.equals("3") || userInput.equals("4") || userInput.equals("5")))
     	    		{
     					main.windowOutput("Please enter a valid answer");
-    	    			userInput = scan.nextLine();
+						userInput = scan.nextLine();
+						main.windowOutput(userInput);
     	    		}
     				switch (Integer.parseInt(userInput)) 
     				{
@@ -60,10 +62,12 @@ public class builder extends survivor
 				{
 					//#region Builder Tasks (Up to option 4)
 					userInput = scan.nextLine();
+					main.windowOutput(userInput);
 					while(!(userInput.equals("1") || userInput.equals("2") || userInput.equals("3") || userInput.equals("4")))
 		    		{
 						main.windowOutput("Please enter a valid answer");
-		    			userInput = scan.nextLine();
+						userInput = scan.nextLine();
+						main.windowOutput(userInput);
 		    		}
     				switch (Integer.parseInt(userInput)) 
     				{
