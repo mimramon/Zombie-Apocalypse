@@ -70,7 +70,8 @@ public class window implements ActionListener
 	{
     	main.userInput = inputField.getText();
 		outputArea.append(inputField.getText());
-		inputField.setText("");
+        inputField.setText("");
+        main.proceedBool = true;
 	}
     public static void nextRound()
     {
