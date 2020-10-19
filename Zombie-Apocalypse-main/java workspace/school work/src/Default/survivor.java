@@ -29,14 +29,14 @@ public class survivor
 
 	}
 
-	public void defaultTasks(int partyPosition) 
+	public void defaultTasks(int partyPosition) throws InterruptedException 
 	{
-		userInput = scan.nextLine();
+		main.proceed();
 		main.windowOutput(userInput);
 		while(!(userInput.equals("1") || userInput.equals("2") || userInput.equals("3") ))
 		{
 			main.windowOutput("Please enter a valid answer");
-			userInput = scan.nextLine();
+			main.proceed();
 			main.windowOutput(userInput);
 		}
 		switch (Integer.parseInt(userInput)) 

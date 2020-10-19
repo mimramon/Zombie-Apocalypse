@@ -5,7 +5,8 @@ public class main // Game manager class
 {
     public static Scanner scan = new Scanner(System.in);
     public static Random rand = new Random();
-    public static String proceed;
+	public static String proceed;
+	public static boolean proceedBool = false;
 	public static survivor[] PARTY = new survivor[20];
 	public static zombie[] HORDE = new zombie[40]; 
 	public static settlement settlement = new settlement();
@@ -17,14 +18,14 @@ public class main // Game manager class
     public static int event;
 	public static String userInput;
     
-    public static void main(String[] args) // Start function
+    public static void main(String[] args) throws InterruptedException
     {
 		// Open the window
 		gui.createWindow();
 
 		windowOutput("Welcome to Zombie Apocalypse.");
 		windowOutput("Press enter to continue.");
-        proceed = scan.nextLine();
+        proceed();
 		
 		startGame();
 
@@ -52,7 +53,7 @@ public class main // Game manager class
 		windowOutput("- " + settlement.ammo + " ammo");
 	}
 
-	public static void roundManager()
+	public static void roundManager() throws InterruptedException
 	{
 		while(round <= 100 && !isDead)
         {
@@ -105,7 +106,7 @@ public class main // Game manager class
 							break;
 					}
 					windowOutput("Press enter to continue to task selection");
-					proceed = scan.nextLine();
+					proceed();
 					break;
 
 				// Another zombie event (To increase the chances of it occurring)
@@ -123,14 +124,14 @@ public class main // Game manager class
 					settlement.food = settlement.food + newfood;
 					windowOutput("You now have " + settlement.food + " food.");
 					windowOutput("Press enter to continue to task selection");
-					proceed = scan.nextLine();
+					proceed();
 					break;
 
 				// Nothing happens
         		case 4:
 					windowOutput("Nothing has has happened this round");
 					windowOutput("Press enter to continue to task selection");
-					proceed = scan.nextLine();
+					proceed();
 					break;
 
 				// Survivor event
@@ -153,7 +154,7 @@ public class main // Game manager class
 		}	
 	}
 	
-	public static void idleTasks()
+	public static void idleTasks() throws InterruptedException
 	{
 		// Idle tasks that occur every round
     	for (int i = 0; i < partySize ; i++)
@@ -161,10 +162,10 @@ public class main // Game manager class
 			PARTY[i].idle(i);	
 		}
 		windowOutput("\n\nPlease press enter to continue to the next round");
-		proceed = scan.nextLine();
+		proceed();
 	}
 	
-	public static void survivorEvent()
+	public static void survivorEvent() throws InterruptedException
 	{
 		if(partySize < settlement.houses*4)
 		{
@@ -196,10 +197,10 @@ public class main // Game manager class
 		}
 
 		windowOutput("Press enter to continue to task selection");
-		proceed = scan.nextLine();
+		proceed();
 	}
 
-	public static void zombieEvent()
+	public static void zombieEvent() throws InterruptedException
 	{
 		hordeSize = rand.nextInt(partySize*2);
 		windowOutput("You have encountered:");
@@ -334,7 +335,7 @@ public class main // Game manager class
 			}
 		}
 		windowOutput("Press enter to continue to task selection");
-		proceed = scan.nextLine();				
+		proceed();				
 	}
 	
 	public static void windowOutput(String output)
@@ -344,8 +345,12 @@ public class main // Game manager class
 		window.outputArea.setCaretPosition(window.outputArea.getDocument().getLength()); // Set the scroll bar to the bottom in the JFrame
 	}
 	
-	public static void proceed() 
+	public static void proceed() throws InterruptedException 
 	{
-		
+		while(!proceedBool)
+		{
+			Thread.sleep(1);
+		}
+		proceedBool = false;
 	}
 }

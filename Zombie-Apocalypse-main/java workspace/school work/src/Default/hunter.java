@@ -12,7 +12,15 @@ public class hunter extends survivor
 	public void idle(int partyPosition)
 	{
 		main.windowOutput("\nWhat would you like your hunter to do.");
-		main.windowOutput("1) Scavenge\n2) Find timber\n3) Mining");
-		defaultTasks(partyPosition);
+        main.windowOutput("1) Scavenge\n2) Find timber\n3) Mining");
+        try
+        {
+            defaultTasks(partyPosition);
+        }
+        catch(InterruptedException e)
+        {
+            System.out.println("An error has occured: " + e);
+            main.windowOutput("An error has occured: " + e);
+        }
 	}
 }

@@ -9,7 +9,7 @@ public class builder extends survivor
 	}
 
     // BUILDER IDLE TASKS
-	public void idle(int partyPosition)
+	public void idle(int partyPosition) throws InterruptedException
 	{
 		main.windowOutput("\nWhat would you like your builder to do.");
 		main.windowOutput("1) Scavenge\n2) Find timber\n3) Mining");
@@ -66,7 +66,7 @@ public class builder extends survivor
 					while(!(userInput.equals("1") || userInput.equals("2") || userInput.equals("3") || userInput.equals("4")))
 		    		{
 						main.windowOutput("Please enter a valid answer");
-						userInput = scan.nextLine();
+						main.proceed();
 						main.windowOutput(userInput);
 		    		}
     				switch (Integer.parseInt(userInput)) 
@@ -98,7 +98,15 @@ public class builder extends survivor
 		}
 		else 
 		{
-			defaultTasks(partyPosition);
+			try
+        	{
+            	defaultTasks(partyPosition);
+        	}
+        	catch(InterruptedException e)
+        	{
+            	System.out.println("An error has occured: " + e);
+            	main.windowOutput("An error has occured: " + e);
+        	}
 		}
 	}
 

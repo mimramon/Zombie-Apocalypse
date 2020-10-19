@@ -16,12 +16,12 @@ public class blacksmith extends survivor
 		if(main.settlement.metal >0 && main.settlement.workshop)
     	{
 			main.windowOutput("4) Make ammo");
-			userInput = scan.nextLine();
+			main.proceed();
 			main.windowOutput(userInput);
     		while(!(userInput.equals("1") || userInput.equals("2") || userInput.equals("3") || userInput.equals("4")))
     		{
     			main.windowOutput("Please enter a valid answer");
-				userInput = scan.nextLine();
+				main.proceed();
 				main.windowOutput(userInput);
     		}
     		switch (Integer.parseInt(userInput)) 
@@ -40,7 +40,6 @@ public class blacksmith extends survivor
 					break;
 				case 4:
 					main.windowOutput("How much ammo would you like to make?\nWith your current resources, you can make " + main.settlement.metal + " ammo.");
-					userInput = scan.nextLine();
 					main.windowOutput(userInput);
 					if(main.settlement.metal/Integer.parseInt(userInput) >= 1)
 					{

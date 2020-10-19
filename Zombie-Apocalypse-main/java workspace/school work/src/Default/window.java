@@ -69,9 +69,11 @@ public class window implements ActionListener
 	public void actionPerformed(ActionEvent e)
 	{
     	main.userInput = inputField.getText();
-		outputArea.append(inputField.getText());
-		inputField.setText("");
-	}
+		outputArea.append(main.userInput);
+        inputField.setText("");
+        main.proceedBool = true;
+    }
+    
     public static void nextRound()
     {
         progressBar.setValue(main.round); // Set the value of the progress bar
