@@ -17,11 +17,13 @@ public class medic extends survivor
     	{
 			main.windowOutput("4) Make meds");
 			//#region Builder Tasks (Up to task 5)
-    		userInput = scan.nextLine();
+			userInput = scan.nextLine();
+			main.windowOutput(userInput);
     		while(!(userInput.equals("1") || userInput.equals("2") || userInput.equals("3") || userInput.equals("4")))
     		{
     			main.windowOutput("Please enter a valid answer");
-    			userInput = scan.nextLine();
+				userInput = scan.nextLine();
+				main.windowOutput(userInput);
     		}
     		switch (Integer.parseInt(userInput)) 
     		{
@@ -41,10 +43,12 @@ public class medic extends survivor
 					// Code to make meds here
 					main.windowOutput("How many meds would you like to make?\nWith your current resources, you can make " + main.settlement.food/10 + " meds.");
 					userInput = scan.nextLine();
+					main.windowOutput(userInput);
 					while(!(main.settlement.food/(Integer.parseInt(userInput)*10) >= 1))
 					{
 						main.windowOutput("Please enter a valid number");
 						userInput = scan.nextLine();
+						main.windowOutput(userInput);
 					}
 					if(main.settlement.food/(Integer.parseInt(userInput)*10) >= 1)
 					{

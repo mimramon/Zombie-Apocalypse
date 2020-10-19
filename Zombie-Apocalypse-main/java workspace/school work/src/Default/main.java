@@ -228,10 +228,12 @@ public class main // Game manager class
 		windowOutput("\nYour total combat power is: " + partyPower + "\nThe total combat power of the horde is: " + hordePower);
 		windowOutput("Would you like to use ammo to increase your total combat power or potentially risk the life of a survivor? ( Yes/No )");
 		userInput = scan.nextLine();
+		windowOutput(userInput);
 		while(!(userInput.equalsIgnoreCase("Yes") || userInput.equalsIgnoreCase("No")))
 		{
 			windowOutput("Please enter a valid answer");
 			userInput = scan.nextLine();
+			windowOutput(userInput);
 		}
 
 		if(userInput.equalsIgnoreCase("Yes"))
@@ -239,10 +241,12 @@ public class main // Game manager class
 			windowOutput("How much ammo would you like to use. 1 ammo equates to +1 combat strength");
 			windowOutput("You have " + settlement.ammo + " available to use");
 			userInput = scan.nextLine();
+			windowOutput(userInput);
 			while(!(Integer.parseInt(userInput) <= settlement.ammo))
 			{
 				windowOutput("Please enter a valid value");
 				userInput = scan.nextLine();
+				windowOutput(userInput);
 			}
 			partyPower += Integer.parseInt(userInput);
 			windowOutput("Your total combat power is now " + partyPower);
@@ -260,10 +264,12 @@ public class main // Game manager class
 			{
 				windowOutput("Would you like to use 1 med to save this survivor? ( Yes/No )");
 				userInput = scan.nextLine();
+				windowOutput(userInput);
 				while(!(userInput.equalsIgnoreCase("yes") || userInput.equalsIgnoreCase("no")))
 				{
 					windowOutput("Please enter a valid answer");
 					userInput = scan.nextLine();
+					windowOutput(userInput);
 				}
 
 				if(userInput.equalsIgnoreCase("Yes"))
@@ -300,10 +306,12 @@ public class main // Game manager class
 				{
 					windowOutput("Would you like to use 1 med to save this survivor? ( Yes/No )");
 					userInput = scan.nextLine();
+					windowOutput(userInput);
 					while(!(userInput.equalsIgnoreCase("yes") || userInput.equalsIgnoreCase("no")))
 					{
 						windowOutput("Please enter a valid answer");
 						userInput = scan.nextLine();
+						windowOutput(userInput);
 					}
 					if(userInput.equalsIgnoreCase("Yes"))
 					{
