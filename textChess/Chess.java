@@ -1,4 +1,4 @@
-public class Main 
+public class Chess
 {
     //#region vars
     static final int maxWidth = 8;
@@ -6,6 +6,14 @@ public class Main
     static char[][] board = new char[maxWidth][maxHeight];
     //#endregion
 
+    class Piece
+    {
+    
+    }
+    class Tile
+    {
+        Piece piece;
+    }
     public static void main(String[] args)
     {
         boolean gameOver = false;
@@ -13,13 +21,14 @@ public class Main
         displayBoard();
         while(!gameOver)
         {
-            turnA();
-            turnB();
+            turn(true);
+            turn(false);            
         }
     }
 
     static void createBoard()
     {
+        /*
         for(int i = 0; i < maxWidth; i++)
         {
             for(int j = 0; j < maxHeight; j++)
@@ -54,6 +63,7 @@ public class Main
                 }
             }
         }
+        */
     }
 
     static void displayBoard()
@@ -68,13 +78,18 @@ public class Main
         }
     }
     
-    static void turnA()
+    static void turn(boolean player)
     {
-
+        if(isChecked()){}
     }
-    
-    static void turnB()
-    {
 
+    static boolean validMove()
+    {
+        return false;
+    }
+
+    static boolean isChecked()
+    {
+        return false;
     }
 }
