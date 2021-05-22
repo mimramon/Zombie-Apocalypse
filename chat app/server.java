@@ -29,8 +29,10 @@ public class server
         outStream.flush();
     }
 
+    /*
     public static void main(String[] args) throws IOException
     {
         server server = new server();    
     }
+    */
 }

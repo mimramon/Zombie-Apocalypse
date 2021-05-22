@@ -28,8 +28,10 @@ public class client
         outStream.flush();
     }
 
+    /*
     public static void main(String[] args) throws IOException
     {
         client client = new client();
     }
+    */
 }
