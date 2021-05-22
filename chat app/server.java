@@ -1,4 +1,3 @@
-//package server;
 import java.io.*;
 import java.net.*;
 
@@ -8,7 +7,6 @@ public class server
     public Socket socket;
     public DataInputStream inStream;
     public DataOutputStream outStream;
-    public String userInput;
 
     public server() throws IOException
     {
@@ -17,9 +15,10 @@ public class server
         socket = serverSocket.accept();
         inStream = new DataInputStream(socket.getInputStream());
         outStream = new DataOutputStream(socket.getOutputStream());
-        while(!userInput.equalsIgnoreCase("stop"))
+        while(true)
         {
-            System.out.println("server says: " + inStream.readUTF());
+            String incomingMessage = inStream.readUTF();
+            gui.textArea.append("client says: " + incomingMessage + "\n");
         }
     }
 
