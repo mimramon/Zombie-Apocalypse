@@ -10,7 +10,7 @@ public class server
 
     public server() throws IOException
     {
-        GUI gui = new GUI(this);
+        serverGUI gui = new serverGUI(this);
         serverSocket = new ServerSocket(4999);
         socket = serverSocket.accept();
         inStream = new DataInputStream(socket.getInputStream());
@@ -22,8 +22,17 @@ public class server
         }
     }
 
+    public void sendMessage(String input) throws IOException
+    {
+        outStream = new DataOutputStream(socket.getOutputStream());
+        outStream.writeUTF(input);
+        outStream.flush();
+    }
+
+    /*
     public static void main(String[] args) throws IOException
     {
-        server server = new server();
+        server server = new server();    
     }
+    */
 }
