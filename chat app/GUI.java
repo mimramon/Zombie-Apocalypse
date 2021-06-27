@@ -4,7 +4,7 @@ import java.awt.*;
 import java.awt.event.*;
 import java.io.*;
 
-public class clientGUI extends JFrame implements ActionListener
+public class GUI extends JFrame implements ActionListener
 {
     public JPanel inputPanel;
     public JPanel outputPanel;
@@ -13,10 +13,17 @@ public class clientGUI extends JFrame implements ActionListener
     public JButton send;
     public JTextArea textArea;
     public client client;
+    public server server;
 
-    public clientGUI(client _client)
+    public GUI(client _client)
     {
         client = _client;
+        setupFrame();
+    }
+
+    public GUI(server _server)
+    {
+        server = _server;
         setupFrame();
     }
 
@@ -69,18 +76,18 @@ public class clientGUI extends JFrame implements ActionListener
 
     public void actionPerformed(ActionEvent e)
     {
-        if(e.getSource() == send)
+        String input = textField.getText();
+        textField.setText("");
+        if(client != null)
         {
-            String input = textField.getText();
-            textField.setText("");
-            try
-            {
-                client.sendMessage(input);
-            }
-            catch(IOException ex)
-            {
-                System.out.println(ex);
-            }
+            try{client.sendMessage(input);}
+            catch(IOException ex){System.out.println(ex);}
         }
+        else
+        {
+            try{server.sendMessage(input);}
+            catch(IOException ex){System.out.println(ex);}
+        }
+
     }
 }

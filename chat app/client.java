@@ -10,7 +10,7 @@ public class client
 
     public client() throws IOException
     {
-        clientGUI gui = new clientGUI(this);
+        GUI gui = new GUI(this);
         socket = new Socket("localhost", 4999);
         inStream = new DataInputStream(socket.getInputStream());
         outStream = new DataOutputStream(socket.getOutputStream());
@@ -28,11 +28,4 @@ public class client
         outStream.writeUTF(input);
         outStream.flush();
     }
-
-    /*
-    public static void main(String[] args) throws IOException
-    {
-        client client = new client();
-    }
-    */
 }
