@@ -1,0 +1,3 @@
+main forces to consider:
+thrust, Air resistance, varying mass due to fuel usage, varying g,
+earth's centripetal force.
