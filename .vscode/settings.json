@@ -1,6 +1,7 @@
 {
     "java.project.sourcePaths": [
+        "chat app",
         "Swing_Project/src",
-        "chat app"
+        "Draft simulator"
     ]
 }
