@@ -1,14 +1,16 @@
 import java.awt.*;
 import java.awt.event.*;
+import java.io.IOException;
 import java.util.ArrayList;
 
 import javax.swing.*;
 
-public class Main 
+public static class Main 
 {
     public static void main(String[] args) 
     {
         setupGUI();
+        setupPack();
         addCardsToGrid();
     }
 
@@ -16,6 +18,15 @@ public class Main
     {
         String name;
         Icon image;
+        public Card(String imagePath)
+        {
+            try
+            {
+                image = new Icon(imagePath);
+            }
+            catch(IOException ex){}
+            
+        }
     }
 
     static public ArrayList<Card> Pack = new ArrayList<Card>();
@@ -30,6 +41,14 @@ public class Main
         GUI.setLayout(gridLayout);
     }
 
+    static void setupPack()
+    {
+        for(int i = 0;  i <= 15; i++)
+        {
+            Pack.add(new Card("P:/Desktop/8 values result"));
+        }
+    }
+
     static public void addCardsToGrid()
     {
         int i = 0;
@@ -38,6 +57,5 @@ public class Main
             GUI.add(new JButton("card " + i, Pack.get(i).image));
             i++;
         }
-        GUI.pack();
     }
 }
